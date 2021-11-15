@@ -1,0 +1,55 @@
+body {
+	width: 962px;
+	background-color: white;
+	margin: 15px auto;
+	font-family: verdana;
+}
+
+h1 {
+	color: #605E5F;
+}
+
+p {
+	color: #8E8E8E;
+}
+
+main {
+	height: 400px;
+	width: 600px;
+	float: left;
+}
+
+h2 {
+	padding-bottom: 10px;
+}
+
+aside {
+	width: 350px;
+	float: right;
+}
+
+.photo-column {
+
+}
+
+.product-info {
+	border-bottom: 1px solid #605E5F;
+}
+
+.price-checkout {
+	margin: auto;
+	color: #7E7D7F;
+}
+
+.checkout-button {
+	color: #605E5F;
+	background-color: #97E589;
+	border-radius: 6px;
+	font-size:16px;
+	padding: 12px 30px;
+	text-decoration: none;
+}
+
+.checkout-button:hover {
+	background-color: #81C953;
+}
