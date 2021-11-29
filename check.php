@@ -1,11 +1,14 @@
 <?php
     require('database.php');
+    session_start();
 
     print_r($_POST);
 
     $Username=$_POST['name'];
     $Password=$_POST['password'];
     $check=$_POST['check'];
+
+    $_SESSION['Username'] = $Username;
 
     $query="SELECT * FROM Users WHERE name='$Username' AND password='$Password'";
 
