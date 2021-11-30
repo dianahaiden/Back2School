@@ -11,6 +11,4 @@ $db = new PDO($dsn,$username,$password);
   $error_message = $e -> getMessage();
   echo "<p> An error occured while connecting to the database: $error_message </p>";
 }
-echo "<p> database success </p>";
-
 ?>
