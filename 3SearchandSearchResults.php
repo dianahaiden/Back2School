@@ -20,6 +20,17 @@
     $statement2 -> execute();
     $Products = $statement2 -> fetchAll();
     $statement2 -> closeCursor();
+
+    
+    $UserID = "1";
+    $Username = filter_input(INPUT_POST, $UserID);
+	$query2 = 'SELECT * FROM Users WHERE Username = :UserID';
+	$statement3 = $db -> prepare($query2);
+	$statement3 -> bindValue('UserID', $Username);
+	$success = $statement3 -> execute();
+	$Users = $statement3 -> fetch();
+	$statement2 -> closeCursor();
+    
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +43,7 @@
     <header>
         <h1>Back2School</h1>
     </header>
-
+    
     <body>
         <form class="example" action="action_page.php">
             <input type="text" placeholder="Search.." name="search">
@@ -44,14 +55,18 @@
             <div class="product-container">
                 <div class="image-container">
                 <!-- print out image -->
-                    <?php $content = file_get_contents($Product['Image']);?>
-                    <?php header('Content-Type: image/gif'); ?>
-                    <?php echo $content; ?>
+                    
                 </div>  
                 <div class="product_info">
                   <!-- print out name and price -->
-                  <?php echo $product['Name']; ?>
-                  <?php echo $product['Price']; ?>
+                  <?php echo $Product['Name']; ?>
+                  <?php echo $Product['Price']; ?>
+                  <?php echo $UserID; ?>
+                  <form action="4Products.php" method="post">
+                    <input type="hidden" name="ProductID" value="<?php echo $Product['ID']; ?>">
+                    <input type="hidden" name="UserID" value="<?php echo $Users['Username']; ?>">
+                    <input type="submit" value="View">
+                    </form>
                 </div>  
             </div>
             <?php endforeach; ?>
