@@ -3,12 +3,12 @@
 $name = filter_input(INPUT_POST, 'name');
 $pwd = filter_input(INPUT_POST, 'pwd');
 $email = filter_input(INPUT_POST, 'email');
+$confirm = filter_input(INPUT_POST, 'confirm');
 
 
 
-if ($name == null || $email == null || $pwd == null){
-    $error = "Invalid input data. Check all field and try again.";
-    echo "<p>$name, $email, $pwd</p>";
+if ($name == null || $email == null || $pwd == null || (strcmp($pwd, $confirm)!== 0)){
+    header('location: 2Registration.php');
 } else {
     require_once('database.php');
     $query = 'INSERT INTO Users (name, pwd, email) VALUES(:name, :pwd, :email)';
