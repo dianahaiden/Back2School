@@ -39,8 +39,26 @@
         <title>Products</title>
         <link rel="stylesheet" href="styleproducts.css">
     </head>
+
+	<div class="header-bar">
+		<div class="header-left">
+			<p>HAVE FUN SHOPPING!</p>
+		</div>
+		<div class="header-homepage">
+			<a href="3SearchAndSearchResults.php"><h1>BACK2SCHOOL</h1></a>
+		</div>
+		<div class="header-right">
+			<div class="flex1">
+				<a href=#><p>SIGN OUT</p></a>
+			</div>
+			<div class="flex2">
+				<a href="5ShoppingCart.php"><img src="cart.png" width="60px"></a>
+			</div>
+		</div>
+	</div>	
         
     <body>
+		<div class="content-container">
 			<main>
 				<div class="photo-column">
 					<!-- Print Image -->
@@ -63,14 +81,18 @@
 					<form action="AddToCart.php" method="post">
 						<button type = "submit" class="checkout-button">Add to Cart</button>
 						<!-- gives three inputs to the AddToCart.php page -->
-                    	<input type="hidden" name="ProductID" value='1'>
-						<input type="hidden" name="UserID" value='1'>
+                    	<input type="hidden" name="ProductID" value="<?php echo $Product['ID'] ?>">
+						<input type="hidden" name="UserID" value="1">
 						<input type="hidden" name="Quantity" value="1">
 					</form>
 					
 				</div>
 			</aside>
-		
+		</div>
 		
     </body>
+
+	<footer>
+		<p>@ 2021 Back2School</p>	
+	</footer>
 </html>
