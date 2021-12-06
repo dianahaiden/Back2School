@@ -4,7 +4,6 @@
     if (isset($_SESSION['Username'])) {
         $Username = $_SESSION['Username'];
     
-
     // receive input from Products.php
     $UserID = filter_input(INPUT_GET, 'UserID', FILTER_VALIDATE_INT);
 	if ($UserID == NULL || $UserID == FALSE) {

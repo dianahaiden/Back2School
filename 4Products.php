@@ -50,9 +50,7 @@
 		</div>
 		<div class="header-right">
 			<div class="flex1">
-			<form name = "signout" action="signout.php" method="post">
-                <input type="submit" value = "SIGN OUT">
-            </form>
+			<a href="signout.php"><p>SIGN OUT</p></a>
 			</div>
 			<div class="flex2">
 				<a href="5ShoppingCart.php"><img src="cart.png" width="60px"></a>
