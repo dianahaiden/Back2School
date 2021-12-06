@@ -18,6 +18,7 @@
                     if (email_confirm(email)) {
                         if (pwd_confirm(pwd)) {
                             if (conf_confirm(confirm, pwd)) {
+                                document.getElementById("register").submit();
                             }
                         }
                     }
