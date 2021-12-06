@@ -1,6 +1,6 @@
 <?php
 try {
-$dsn = 'mysql:host=localhost;dbname=Login';
+$dsn = 'mysql:host=localhost;dbname=back2school';
 $username = 'root';
 $password = '';
 $db = new PDO($dsn,$username,$password);
