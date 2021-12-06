@@ -3,14 +3,20 @@
     session_start();
 
     if (isset($_SESSION['Username'])) {
-      $Username = $_SESSION['Username'];
-    } else {
-        header('location: 1Login.php');
-    }
+     
 
     // Get Session and Username
+    $Username = filter_input(INPUT_POST, $_SESSION['Username']);
+    $query1="SELECT * FROM user WHERE Username = $_SESSION[Username]";
+    $statement1 = $db -> prepare($query1);
+    $statement1 -> bindValue($_SESSION['Username'], $Username);
+	$statement1 -> execute();
+    $users = $statement1 -> fetch();
+    $UserID = $users['UserID'];
+    $statement1 -> closeCursor();
+
+    echo $UserID;
     
-    $UserID = "1";
     $UserID = filter_input(INPUT_POST, $UserID);
     $ProductID = filter_input(INPUT_POST, 'ProductID');
 	$query = 'SELECT P.ProductID, P.Name, P.Price FROM Product P INNER JOIN Cart C ON P.ProductID = C.ProductID WHERE C.UserID = UserID ORDER BY P.ProductID;';
@@ -18,7 +24,10 @@
 	$success = $statement -> execute();
 	$Products = $statement -> fetchAll(PDO::FETCH_ASSOC);
 	$statement -> closeCursor();
-
+    
+    } else {
+        header('location: 1Login.php');
+    }
 ?>
 
 <!DOCTYPE html>
