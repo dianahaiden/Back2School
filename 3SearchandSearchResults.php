@@ -1,35 +1,26 @@
 <?php
     require('database.php');
     
-    $product_id = filter_input(INPUT_GET, 'product_id',FILTER_VALIDATE_INT);
-    if ($product_id == NULL || $product_id ==  FALSE) {
-    $product_id = 1;
+    $ProductID = filter_input(INPUT_GET, 'ProductID',FILTER_VALIDATE_INT);
+    if ($ProductID == NULL || $ProductID ==  FALSE) {
+    $ProductID = 1;
     }
 
-    // Get name for selected category
-    $queryProduct = "SELECT * FROM Products WHERE ID = :product_id";
-    $statement1 = $db ->prepare($queryProduct);
-    $statement1 -> bindValue(':product_id', $product_id);
-    $statement1 -> execute();
-    $Product = $statement1 -> fetch();
-    $Product_name = $Product['Name'];
-    $statement1 -> closeCursor();
-
-    $queryAllProducts = 'SELECT * FROM Products ORDER BY ID';
+    $queryAllProducts = 'SELECT * FROM product ORDER BY ProductID';
     $statement2 = $db -> prepare($queryAllProducts);
     $statement2 -> execute();
-    $Products = $statement2 -> fetchAll();
+    $products = $statement2 -> fetchAll();
     $statement2 -> closeCursor();
 
     
     $UserID = "1";
-    $Username = filter_input(INPUT_POST, $UserID);
-	$query2 = 'SELECT * FROM Users WHERE Username = :UserID';
+    $UserID = filter_input(INPUT_POST, $UserID);
+	$query2 = 'SELECT * FROM user WHERE UserID = :UserID';
 	$statement3 = $db -> prepare($query2);
-	$statement3 -> bindValue('UserID', $Username);
+	$statement3 -> bindValue('UserID', $UserID);
 	$success = $statement3 -> execute();
-	$Users = $statement3 -> fetch();
-	$statement2 -> closeCursor();
+	$user = $statement3 -> fetch();
+	$statement3 -> closeCursor();
     
 ?>
 
@@ -37,161 +28,59 @@
 <hmtl>
     <head>
         <title>Search</title>
-        <link rel="search" href="stylesearch.css">
+        <link rel="stylesheet" href="styleproducts.css">
     </head>
 
-    <header>
-        <h1>Back2School</h1>
-    </header>
+    <div class="header-bar">
+		<div class="header-left">
+			<p>HAVE FUN SHOPPING!</p>
+		</div>
+		<div class="header-homepage">
+			<a href="3SearchAndSearchResults.php"><h1>BACK2SCHOOL</h1></a>
+		</div>
+		<div class="header-right">
+			<div class="flex1">
+				<a href=#><p>SIGN OUT</p></a>
+			</div>
+			<div class="flex2">
+				<a href="5ShoppingCart.php"><img src="cart.png" width="60px"></a>
+			</div>
+		</div>
+	</div>
     
     <body>
-        <div class="search-container">
         <form class="example" action="action_page.php">
             <input type="text" placeholder="Search.." name="search">
-            <button type="submit" class="add-button"><i ></i>Search</button>
+            <button type="submit"><i class="fa fa-search"></i>Search</button>
+        
         </form>
-        </div>
-        <br><br>
-        <br><br>
-        <section class="product-list">
-            <?php foreach ($Products as $Product) : ?>
-                <h1 class="pSection">Products</h1>
-
-                <div class="product-container"> 
-                    <!-- MECHANICAL PENCILS -->
-                    <div class="card">
-                        <div class="image">
-                        <img src="images/mechanicalpencil1.jpg" alt="Mechanical Pencils"> 
-                        </div>
-                        <a href="products.html"><div class="title">Mechanical Pencils</div></a>
-                        <div class="text">Product Description...</div>
-                        <br>
-                        <div class="price">$3.99</div>
-                        <button class="add-button">Add to Cart</button>
-                    </div>
-
-                    <!-- PEN -->
-                    <div class="card">
-                        <div class="image">
-                        <img src="images/pen.jpg" alt="Pens"> 
-                        </div>
-                        <a href="products.html"><div class="title">Pens</div></a> 
-                        <div class="text">Product Description...</div>
-                        <br>
-                        <div class="price">$3.99</div>
-                        <button class="add-button">Add to Cart</button>
-                    </div>
-
-                    <!-- NOTEBOOKS -->
-                    <div class="card">
-                        <div class="image">
-                        <img src="images/notebook.jpg" alt="Mechanical Pencils"> 
-                        </div>
-                        <a href="products.html"><div class="title">Notebooks</div></a>
-                        <div class="text">Product Description...</div>
-                        <br>
-                        <div class="price">$3.99</div>
-                        <button class="add-button">Add to Cart</button>
-                    </div>
-
-                    <!-- BINDERS -->
-                    <div class="card"> 
-                        <div class="image">
-                        <img src="images/binder.jpg" alt="Binders"> 
-                        </div>
-                        <a href="products.html"><div class="title">Binders</div></a>
-                        <div class="text">Product Description...</div>
-                        <br>
-                        <div class="price">$3.99</div>
-                        <button class="add-button">Add to Cart</button>
-                    </div>
-
-                    <!-- HIGHLIGHTERS -->
-                    <div class="card"> 
-                        <div class="image">
-                        <img src="images/highlighter.jpg" alt="Highlighters"> 
-                        </div>
-                        <a href="products.html"><div class="title">Highlighters</div></a>
-                        <div class="text">Product Description...</div>
-                        <br>
-                        <div class="price">$3.99</div>
-                        <button class="add-button">Add to Cart</button>
-                    </div>
-
-                    <!-- POST-IT NOTES -->
-                    <div class="card">
-                        <div class="image">
-                        <img src="images/post-it-note.jpg" alt="Post-It Notes"> 
-                        </div>
-                        <a href="products.html"><div class="title">Post-It Notes</div></a> 
-                        <div class="text">Product Description...</div>
-                        <br>
-                        <div class="price">$3.99</div>
-                        <button class="add-button">Add to Cart</button>
-                    </div>
-
-                    <!-- BACKPACK -->
-                    <div class="card"> 
-                        <div class="image">
-                        <img src="images/backpack.jpg" alt="Backpack"> 
-                        </div>
-                        <a href="products.html"><div class="title">Backpack</div></a>
-                        <div class="text">Product Description...</div>
-                        <br>
-                        <div class="price">$3.99</div>
-                        <button class="add-button">Add to Cart</button>
-                    </div>
-
-                    <!-- LAPTOP -->
-                    <div class="card">
-                        <div class="image">
-                        <img src="images/laptop.jpg" alt="Laptop"> 
-                        </div>
-                        <a href="products.html"><div class="title">Laptop</div></a> 
-                        <div class="text">Product Description...</div>
-                        <br>
-                        <div class="price">$3.99</div>
-                        <button class="add-button">Add to Cart</button>
-                    </div>
-
-                    <!-- ACCESSORIES -->
-                    <div class="card">
-                        <div class="image">
-                        <img src="images/accessories.jpg" alt="Accessories"> 
-                        </div>
-                        <a href="products.html"><div class="title">Accessories</div></a>
-                        <div class="text">Product Description...</div>
-                        <br>
-                        <div class="price">$3.99</div>
-                        <button class="add-button">Add to Cart</button>
-                    </div>
-                </div>
-
-
-
-
-
-                <div class="product-container">
-                    <div class="image-container">
-                    <!-- print out image -->
-                        
-                    </div>  
-                    <div class="product_info">
-                    <!-- print out name and price -->
-                    <?php echo $Product['Name']; ?>
-                    <?php echo $Product['Price']; ?>
-                    <?php echo $UserID; ?>
-                    <form action="4Products.php" method="post">
-                        <input type="hidden" name="ProductID" value="<?php echo $Product['ID']; ?>">
-                        <input type="hidden" name="UserID" value="<?php echo $Users['Username']; ?>">
-                        <input type="submit" value="View">
+        <section class="products">
+        <?php foreach ($products as $product) : ?>
+            <div class="product-container">
+                <div class="image-container">
+                <!-- print out image -->
+                    
+                </div>  
+                <div class="product_info">
+                  <!-- print out name and price -->
+                  <?php echo $product['Name']; ?>
+                  <?php echo $product['Price']; ?>
+    
+                  <form action="4Products.php" method="post">
+                    <input type="hidden" name="ProductID" value="<?php echo $product['ProductID']; ?>">
+                    <input type="hidden" name="UserID" value="<?php echo $user['UserID']; ?>">
+                    <input type="submit" value="View">
                     </form>
-                    </div>  
-                </div>
-
-
-                
+                </div>  
+            </div>
             <?php endforeach; ?>
         </section>
+
+
     </body>
+
+    <footer>
+		<p>@ 2021 Back2School</p>	
+	</footer>
 </html>
+

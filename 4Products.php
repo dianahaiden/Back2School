@@ -3,32 +3,32 @@
     
 	// receives two pieces of input from SearchAndSearchResults, ProductID and UserID
 	// filters input
-	$ID = filter_input(INPUT_GET, 'ProductID', FILTER_VALIDATE_INT);
-	if ($ID == NULL || $ID == FALSE) {
-		$ID = 1;
+	$ProductID = filter_input(INPUT_GET, 'ProductID', FILTER_VALIDATE_INT);
+	if ($ProductID == NULL || $ProductID == FALSE) {
+		$ProductID = 1;
 	}
 
-	$Username = filter_input(INPUT_GET, 'UserID', FILTER_VALIDATE_INT);
-	if ($Username == NULL || $Username == FALSE) {
-		$Username = 1;
+	$UserID = filter_input(INPUT_GET, 'UserID', FILTER_VALIDATE_INT);
+	if ($UserID == NULL || $UserID == FALSE) {
+		$UserID = 1;
 	}
 
-	$ID = filter_input(INPUT_POST, 'ProductID');
+	$ProductID = filter_input(INPUT_POST, 'ProductID');
 
 	// finds the product in Products table where the ID is equal to the input
-	$query = 'SELECT * FROM Products WHERE ID = :ProductID';
+	$query = 'SELECT * FROM product WHERE ProductID = :ProductID';
 	$statement = $db -> prepare($query);
-	$statement -> bindValue('ProductID', $ID);
+	$statement -> bindValue('ProductID', $ProductID);
 	$success = $statement -> execute();
 	$Product = $statement -> fetch();
 	$statement -> closeCursor();
 
 	$Username = filter_input(INPUT_POST, 'UserID');
-	$query2 = 'SELECT * FROM Users WHERE Username = :UserID';
+	$query2 = 'SELECT * FROM user WHERE UserID = :UserID';
 	$statement2 = $db -> prepare($query2);
-	$statement2 -> bindValue('UserID', $Username);
+	$statement2 -> bindValue('UserID', $UserID);
 	$success = $statement2 -> execute();
-	$Users = $statement2 -> fetch();
+	$User = $statement2 -> fetch();
 	$statement2 -> closeCursor();
 	
 ?>
@@ -62,7 +62,7 @@
 			<main>
 				<div class="photo-column">
 					<!-- Print Image -->
-					<img src="<?php echo $Product['Image']; ?>" width="600">
+					<img src="<?php echo $product['Image']; ?>" width="600">
 
 				</div>
 			</main>
@@ -70,18 +70,18 @@
 			<aside>
 				<div class="product-info">
 					<!-- Print Name and Product Description -->
-					<h1><?php echo $Product['Name']; ?></h1>
+					<h1><?php echo $product['Name']; ?></h1>
 					<p>Product Desciption should be put here.</p>
 				</div>
 
 				<div class="price-checkout">
 					<!-- Print Price -->
-					<h2>$<?php echo $Product['Price']; ?></h2>
+					<h2>$<?php echo $product['Price']; ?></h2>
 					<!-- Increases Quantity by 1 and brings user back to home page -->
 					<form action="AddToCart.php" method="post">
 						<button type = "submit" class="checkout-button">Add to Cart</button>
 						<!-- gives three inputs to the AddToCart.php page -->
-                    	<input type="hidden" name="ProductID" value="<?php echo $Product['ID'] ?>">
+                    	<input type="hidden" name="ProductID" value="<?php echo $product['ID'] ?>">
 						<input type="hidden" name="UserID" value="1">
 						<input type="hidden" name="Quantity" value="1">
 					</form>

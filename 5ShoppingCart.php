@@ -1,3 +1,20 @@
+<?php
+    require('database.php');
+    // session_start();
+
+    // Get Session and Username
+    
+    $UserID = "1";
+    $UserID = filter_input(INPUT_POST, $UserID);
+    $ProductID = filter_input(INPUT_POST, 'ProductID');
+	$query = 'SELECT P.ProductID, P.Name, P.Price FROM Product P INNER JOIN Cart C ON P.ProductID = C.ProductID WHERE C.UserID = UserID ORDER BY P.ProductID;';
+	$statement = $db -> prepare($query);
+	$success = $statement -> execute();
+	$Products = $statement -> fetchAll(PDO::FETCH_ASSOC);
+	$statement -> closeCursor();
+
+?>
+
 <!DOCTYPE html>
 <hmtl>
     <head>
@@ -8,11 +25,13 @@
     <body>
         <h2>Your Cart</h2>
         <table>
+        <?php foreach ($Products as $Product) : ?>
            <tr>
-                <th>Name</th>
-                <th>Price</th>
+                <th><?php echo $Product['Name']; ?></th>
+                <th><?php echo $Product['Price']; ?></th>
                 <th></th>
            </tr>
+         <?php endforeach; ?>
            <tr>
                <td>placeholder</td>
                <td>total</td> 
@@ -26,7 +45,7 @@
                
             </tr>
         </table>
-        <form action="/action_page.php">
+        <form action="6CheckOut.php">
             <input type="submit" value="Checkout">
         </form>
         
