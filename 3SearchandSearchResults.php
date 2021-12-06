@@ -1,37 +1,59 @@
 <?php
-    require('database.php');
-    
-    $ProductID = filter_input(INPUT_GET, 'ProductID',FILTER_VALIDATE_INT);
-    if ($ProductID == NULL || $ProductID ==  FALSE) {
-    $ProductID = 1;
-    }
+	require('database.php');
+	session_start();
 
-    $queryAllProducts = 'SELECT * FROM product ORDER BY ProductID';
-    $statement2 = $db -> prepare($queryAllProducts);
-    $statement2 -> execute();
-    $products = $statement2 -> fetchAll();
-    $statement2 -> closeCursor();
+	$Username = filter_input(INPUT_GET, 'UserID', FILTER_VALIDATE_INT);
+	if ($Username == NULL || $Username == FALSE) {
+		$Username = 1;
+	}
 
-    
-    $UserID = "1";
-    $UserID = filter_input(INPUT_POST, $UserID);
-	$query2 = 'SELECT * FROM user WHERE UserID = :UserID';
-	$statement3 = $db -> prepare($query2);
-	$statement3 -> bindValue('UserID', $UserID);
-	$success = $statement3 -> execute();
-	$user = $statement3 -> fetch();
-	$statement3 -> closeCursor();
-    
+	$status="";
+	if (isset($_POST['code']) && $_POST['code']!="") {
+		$code = $_POST['code'];
+		$result = mysqli_query($con, "SELECT * FROM `product` WHERE `code`='$code'");
+		$row = mysqli_fetch_assoc($result);
+		$name = $row['name'];
+		$code = $row['code'];
+		$price = $row['price'];
+		$image = $row['image'];
+ 
+		$cartArray = array(
+		$code=>array(
+		'name'=>$name,
+		'code'=>$code,
+		'price'=>$price,
+		'quantity'=>1,
+		'image'=>$image)
+		);
+	
+	if(empty($_SESSION["shopping_cart"])) {
+		$_SESSION["shopping_cart"] = $cartArray;
+		$status = "<div class='box'>Product is added to your cart!</div>";
+	}else{
+		$array_keys = array_keys($_SESSION["shopping_cart"]);
+		if(in_array($code,$array_keys)) {
+			$status = "<div class='box' style='color:red;'>Product is already added to your cart!</div>"; 
+		} else {
+			$_SESSION["shopping_cart"] = array_merge(
+				$_SESSION["shopping_cart"],
+				$cartArray
+			);
+			$status = "<div class='box'>Product is added to your cart!</div>";
+		}
+	}
+}	
 ?>
 
+
 <!DOCTYPE html>
-<hmtl>
+<html>
     <head>
         <title>Search</title>
         <link rel="stylesheet" href="styleproducts.css">
+        <link rel="stylesheet" href="stylesearch.css">
     </head>
 
-    <div class="header-bar">
+	<div class="header-bar">
 		<div class="header-left">
 			<p>HAVE FUN SHOPPING!</p>
 		</div>
@@ -43,44 +65,48 @@
 				<a href=#><p>SIGN OUT</p></a>
 			</div>
 			<div class="flex2">
-				<a href="5ShoppingCart.php"><img src="cart.png" width="60px"></a>
+				<a href="5ShoppingCart.php"><img src="images/shopping-cart.png" width="60px">
+					<?php
+						if(!empty($_SESSION["shopping_cart"])) {
+							$cart_count = count(array_keys($_SESSION["shopping_cart"]));
+							echo $cart_count;
+						} 
+					?>
+				</a>
 			</div>
 		</div>
-	</div>
-    
-    <body>
-        <form class="example" action="action_page.php">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><i class="fa fa-search"></i>Search</button>
+	</div>	
         
-        </form>
-        <section class="products">
-        <?php foreach ($products as $product) : ?>
-            <div class="product-container">
-                <div class="image-container">
-                <!-- print out image -->
-                    
-                </div>  
-                <div class="product_info">
-                  <!-- print out name and price -->
-                  <?php echo $product['Name']; ?>
-                  <?php echo $product['Price']; ?>
-    
-                  <form action="4Products.php" method="post">
-                    <input type="hidden" name="ProductID" value="<?php echo $product['ProductID']; ?>">
-                    <input type="hidden" name="UserID" value="<?php echo $user['UserID']; ?>">
-                    <input type="submit" value="View">
-                    </form>
-                </div>  
-            </div>
-            <?php endforeach; ?>
-        </section>
-
-
+    <body>
+		<div class="search-container">
+				<form class="example" action="3SearchandSearchResults.php">
+					<input type="text" placeholder="Search.." name="search">
+					<button type="submit" class="search-button"><p>SEARCH</p></button>
+				</form>
+		</div>
+		<h1 class="pSection">Products</h1>
+		<section class="product-list">
+			<div class="product-container">
+				<?php		
+					$searchProducts = "SELECT * FROM `product` LIMIT 0,9";
+					$result = mysqli_query($con, $searchProducts);
+					while($row = mysqli_fetch_assoc($result)){
+						echo
+							"<form method='post' action='' class='card'>
+								<div class='image'><img src=".$row['Image']."></div>
+								<div class='title'>".$row['Name']."</div>
+								<div class='price'>$ ".$row['Price']."</div>
+								<button type='submit' class='add-button'>Add to Cart</button>
+							</form>";
+					}
+					mysqli_close($con);
+				?>
+			</div>
+		</section>
     </body>
 
-    <footer>
+
+	<footer>
 		<p>@ 2021 Back2School</p>	
 	</footer>
 </html>
-
