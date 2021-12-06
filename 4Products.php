@@ -20,7 +20,7 @@
 	$statement = $db -> prepare($query);
 	$statement -> bindValue('ProductID', $ProductID);
 	$success = $statement -> execute();
-	$Product = $statement -> fetch();
+	$product = $statement -> fetch();
 	$statement -> closeCursor();
 
 	$Username = filter_input(INPUT_POST, 'UserID');
@@ -81,7 +81,7 @@
 					<form action="AddToCart.php" method="post">
 						<button type = "submit" class="checkout-button">Add to Cart</button>
 						<!-- gives three inputs to the AddToCart.php page -->
-                    	<input type="hidden" name="ProductID" value="<?php echo $product['ID'] ?>">
+                    	<input type="hidden" name="ProductID" value="<?php echo $product['ProductID'] ?>">
 						<input type="hidden" name="UserID" value="1">
 						<input type="hidden" name="Quantity" value="1">
 					</form>
