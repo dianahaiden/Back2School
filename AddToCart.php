@@ -1,5 +1,9 @@
 <?php 
     require('database.php');
+    session_start();
+    if (isset($_SESSION['Username'])) {
+        $Username = $_SESSION['Username'];
+    
 
     // receive input from Products.php
     $UserID = filter_input(INPUT_GET, 'UserID', FILTER_VALIDATE_INT);
@@ -23,18 +27,17 @@
 
     // find the number of rows that exist when the UserID = input and ProductID = input
     // result should either be 0 or 1
-    $query = 'SELECT COUNT(UserID) FROM cart WHERE UserID = :UserID AND ProductID = :ProductID';
+    $query = 'SELECT COUNT(UserID) FROM Cart WHERE UserID = :UserID AND ProductID = :ProductID';
 	$result = $db -> prepare($query);
     $result -> bindValue('UserID', $UserID);
     $result -> bindValue('ProductID', $ProductID);
     $success = $result -> execute();
-    $count = $result->fetchColumn();
     $result -> closeCursor();
 
     // if row already exists in database, then add to the quantity
-    if ($count > 0) {
+    if ($result > 0) {
         // increases quantity of product by 1
-        $queryUpdate = 'UPDATE cart SET Quantity = Quantity + 1 WHERE UserID = :UserID AND ProductID = :ProductID';
+        $queryUpdate = 'UPDATE Cart SET Quantity = Quantity + 1 WHERE UserID = :UserID AND ProductID = :ProductID';
         $statement = $db -> prepare($queryUpdate);
         $statement -> bindValue('UserID', $UserID);
         $statement -> bindValue('ProductID', $ProductID);
@@ -44,7 +47,7 @@
     // if row does not exist in database, create new row and put in input values
     } else {
         
-        $queryAdd = 'INSERT INTO cart (UserID, ProductID, Quantity) VALUES (:UserID, :ProductID, :Quantity)';
+        $queryAdd = 'INSERT INTO Cart (UserID, ProductID, Quantity) VALUES (:UserID, :ProductID, :Quantity)';
         $statement = $db -> prepare($queryAdd);
         $statement -> bindValue('UserID', $UserID);
         $statement -> bindValue('ProductID', $ProductID);
@@ -55,6 +58,10 @@
 
     // Returns user to Home page
     header("Location: 3SearchAndSearchResults.php");
+
+    } else {
+        header('location: 1Login.php');
+    }
 
     /*
     // increases quantity of product by 1

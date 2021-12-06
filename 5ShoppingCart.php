@@ -1,16 +1,22 @@
 <?php
     require('database.php');
-    // session_start();
+    session_start();
+
+    if (isset($_SESSION['Username'])) {
+      $Username = $_SESSION['Username'];
+    } else {
+        header('location: 1Login.php');
+    }
 
     // Get Session and Username
     
     $UserID = "1";
     $UserID = filter_input(INPUT_POST, $UserID);
     $ProductID = filter_input(INPUT_POST, 'ProductID');
-	$query = 'SELECT P.ProductID, P.Name, P.Price FROM product P INNER JOIN cart C ON P.ProductID = C.ProductID WHERE C.UserID = UserID ORDER BY P.ProductID;';
+	$query = 'SELECT P.ProductID, P.Name, P.Price FROM Product P INNER JOIN Cart C ON P.ProductID = C.ProductID WHERE C.UserID = UserID ORDER BY P.ProductID;';
 	$statement = $db -> prepare($query);
 	$success = $statement -> execute();
-	$products = $statement -> fetchAll();
+	$Products = $statement -> fetchAll(PDO::FETCH_ASSOC);
 	$statement -> closeCursor();
 
 ?>
@@ -25,10 +31,10 @@
     <body>
         <h2>Your Cart</h2>
         <table>
-        <?php foreach ($products as $product) : ?>
+        <?php foreach ($Products as $Product) : ?>
            <tr>
-                <th><?php echo $product['Name']; ?></th>
-                <th><?php echo $product['Price']; ?></th>
+                <th><?php echo $Product['Name']; ?></th>
+                <th><?php echo $Product['Price']; ?></th>
                 <th></th>
            </tr>
          <?php endforeach; ?>
