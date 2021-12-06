@@ -7,10 +7,10 @@
     $UserID = "1";
     $UserID = filter_input(INPUT_POST, $UserID);
     $ProductID = filter_input(INPUT_POST, 'ProductID');
-	$query = 'SELECT P.ProductID, P.Name, P.Price FROM Product P INNER JOIN Cart C ON P.ProductID = C.ProductID WHERE C.UserID = UserID ORDER BY P.ProductID;';
+	$query = 'SELECT P.ProductID, P.Name, P.Price FROM product P INNER JOIN cart C ON P.ProductID = C.ProductID WHERE C.UserID = UserID ORDER BY P.ProductID;';
 	$statement = $db -> prepare($query);
 	$success = $statement -> execute();
-	$Products = $statement -> fetchAll(PDO::FETCH_ASSOC);
+	$products = $statement -> fetchAll();
 	$statement -> closeCursor();
 
 ?>
@@ -25,10 +25,10 @@
     <body>
         <h2>Your Cart</h2>
         <table>
-        <?php foreach ($Products as $Product) : ?>
+        <?php foreach ($products as $product) : ?>
            <tr>
-                <th><?php echo $Product['Name']; ?></th>
-                <th><?php echo $Product['Price']; ?></th>
+                <th><?php echo $product['Name']; ?></th>
+                <th><?php echo $product['Price']; ?></th>
                 <th></th>
            </tr>
          <?php endforeach; ?>
