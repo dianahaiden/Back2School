@@ -5,4 +5,4 @@ In order to run, you must install Xampp and then download these files into the H
 
 Then, you must create the database on localhost/phpmyadmin
 
-After that, you can run the code with localhost/project/login.php
+After that, you can run the code with localhost/project/1Login.php
