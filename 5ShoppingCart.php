@@ -6,18 +6,16 @@
      
 
     // Get Session and Username
-    $Username = filter_input(INPUT_POST, $_SESSION['Username']);
-    $query1="SELECT * FROM user WHERE Username = $_SESSION[Username]";
+    $Username = filter_input(INPUT_POST,$_SESSION['Username']);
+    $query1='SELECT * FROM user WHERE Username = :Username';
     $statement1 = $db -> prepare($query1);
-    $statement1 -> bindValue($_SESSION['Username'], $Username);
+    $statement1 -> bindValue('Username', $Username);
 	$statement1 -> execute();
-    $users = $statement1 -> fetch();
-    $UserID = $users['UserID'];
+    $user = $statement1 -> fetchAll();
+    //$UserID = $user['UserID'];
     $statement1 -> closeCursor();
-
-    echo $UserID;
     
-    $UserID = filter_input(INPUT_POST, $UserID);
+    //$UserID = filter_input(INPUT_POST, $UserID);
     $ProductID = filter_input(INPUT_POST, 'ProductID');
 	$query = 'SELECT P.ProductID, P.Name, P.Price FROM Product P INNER JOIN Cart C ON P.ProductID = C.ProductID WHERE C.UserID = UserID ORDER BY P.ProductID;';
 	$statement = $db -> prepare($query);
