@@ -17,7 +17,7 @@
     
     //$UserID = filter_input(INPUT_POST, $UserID);
     $ProductID = filter_input(INPUT_POST, 'ProductID');
-	$query = 'SELECT P.ProductID, P.Name, P.Price FROM Product P INNER JOIN Cart C ON P.ProductID = C.ProductID WHERE C.UserID = UserID ORDER BY P.ProductID;';
+	$query = 'SELECT P.ProductID, P.Name, P.Price, C.Quantity FROM Product P INNER JOIN Cart C ON P.ProductID = C.ProductID WHERE C.UserID = UserID ORDER BY P.ProductID;';
 	$statement = $db -> prepare($query);
 	$success = $statement -> execute();
 	$Products = $statement -> fetchAll(PDO::FETCH_ASSOC);
@@ -38,18 +38,19 @@
     <body>
         <h2>Your Cart</h2>
         <table>
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
         <?php foreach ($Products as $Product) : ?>
            <tr>
-                <th><?php echo $Product['Name']; ?></th>
-                <th><?php echo $Product['Price']; ?></th>
-                <th></th>
+                <td><?php echo $Product['Name']; ?></td>
+                <td><?php echo $Product['Quantity']; ?></td>
+                <td><?php echo $Product['Price'] * $Product['Quantity']; ?></td>
+                <td><button type="submit">Remove</button></td>
            </tr>
          <?php endforeach; ?>
-           <tr>
-               <td>placeholder</td>
-               <td>total</td> 
-               <td><button type="submit">Remove</button></td>
-           </tr>
            <tr>
                 <td>placeholderprice</td>
                 <td>totalprice</td>
