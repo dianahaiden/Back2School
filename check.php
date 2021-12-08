@@ -4,21 +4,21 @@
 
     print_r($_POST);
 
-    $Username=$_POST['name'];
-    $Password=$_POST['password'];
+    $Username=$_POST['Username'];
+    $Password=$_POST['Password'];
     $check=$_POST['check'];
-    $_SESSION["Username"] = $_POST["name"];
+    $_SESSION['Username'] = $_POST['Username'];
     
-    $query="SELECT * FROM user WHERE name='$Username' AND password='$Password'";
+    $query="SELECT * FROM user WHERE Username='$Username' AND Password='$Password'";
 
     $data=$db->query($query);
 
     if($query) {
         if($check=='1') {
             // sets cookie that remembers usename and password and insta-logsin
-            setcookie($Username, 'name', time()+3600, "/"."",0);
-            setcookie($Password, 'password', time()+3600, "/"."",0);
-            setcookie("mycookie", TRUE, time()+6);
+            setcookie($Username, 'Username', time()+3600, "/"."",0);
+            setcookie($Password, 'Password', time()+3600, "/"."",0);
+            setcookie('mycookie', TRUE, time()+6);
         }
         
         header('Location: 3SearchandSearchResults.php');
