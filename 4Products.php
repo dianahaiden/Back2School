@@ -24,13 +24,12 @@
 	$product = $statement -> fetch();
 	$statement -> closeCursor();
 
-	$Username = filter_input(INPUT_POST, 'UserID');
-	$query2 = 'SELECT * FROM user WHERE UserID = :UserID';
-	$statement2 = $db -> prepare($query2);
-	$statement2 -> bindValue('UserID', $UserID);
-	$success = $statement2 -> execute();
-	$User = $statement2 -> fetch();
-	$statement2 -> closeCursor();
+	$query1="SELECT * FROM user WHERE Username ='".$_SESSION['Username']."'";
+    $statement1 = $db -> prepare($query1);
+	$statement1 -> execute();
+    $user = $statement1 -> fetch();
+    $UserID = $user['UserID'];
+    $statement1 -> closeCursor();
 	
 ?>
 
@@ -83,7 +82,7 @@
 						<button type = "submit" class="checkout-button">Add to Cart</button>
 						<!-- gives three inputs to the AddToCart.php page -->
                     	<input type="hidden" name="ProductID" value="<?php echo $product['ProductID'] ?>">
-						<input type="hidden" name="UserID" value="1">
+						<input type="hidden" name="UserID" value="<?php echo $UserID ?>">
 						<input type="hidden" name="Quantity" value="1">
 					</form>
 					
