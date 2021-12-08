@@ -45,7 +45,7 @@ CREATE TABLE `payment_option` (
   `user_id` varchar(255) DEFAULT NULL,
   `pay_fullname` varchar(100) DEFAULT NULL,
   `pay_alias` varchar(20) DEFAULT NULL,
-  `pay_type` enum('PayPal','CreditCard','DebitCard','AfterPay','COD','Other') DEFAULT 'Other',
+  `pay_type` enum('CreditCard','DebitCard') DEFAULT 'Other',
   `email` varchar(100) DEFAULT NULL,
   `card_number` varchar(20) DEFAULT NULL,
   `card_ccv` varchar(5) DEFAULT NULL,
