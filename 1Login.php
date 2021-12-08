@@ -16,9 +16,9 @@
 
         <form action="check.php" method="post">
             <label>Username:</label><br>
-            <input type="text" name="name" placeholder="Username"><br>
+            <input type="text" name="Username" placeholder="Username"><br>
             <label>Password:</label><br>
-            <input type="password" name="password"><br>
+            <input type="password" name="Password"><br>
             <label>Remember Me</label>
             <input type="checkbox" value="1" name="check"><br>
             <input type="submit" value="Login">
