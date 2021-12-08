@@ -15,15 +15,21 @@
     $products = $statement2 -> fetchAll();
     $statement2 -> closeCursor();
 
-    
-    $UserID = "1";
-    $UserID = filter_input(INPUT_POST, $UserID);
+    $query1="SELECT * FROM user WHERE Username ='".$_SESSION['Username']."'";
+    $statement1 = $db -> prepare($query1);
+	$statement1 -> execute();
+    $user = $statement1 -> fetch();
+    $UserID = $user['UserID'];
+    $statement1 -> closeCursor();
+
+    /*
 	$query2 = 'SELECT * FROM user WHERE UserID = :UserID';
 	$statement3 = $db -> prepare($query2);
 	$statement3 -> bindValue('UserID', $UserID);
 	$success = $statement3 -> execute();
 	$user = $statement3 -> fetch();
 	$statement3 -> closeCursor();
+    */
     
 ?>
 
@@ -53,22 +59,24 @@
     
     <body>
         <?php foreach ($products as $product) : ?>
-            <div class="product-container">
+            <ul class="product-container">
+                <li>
                 <div class="image-container">
                 <!-- print out image -->
-                    <img src="<?php echo $product['Image']; ?>" width="600">
+                    <img src="<?php echo $product['Image']; ?>" width="150">
                 </div>  
                 <div class="product_info">
                   <!-- print out name and price -->
-                  <?php echo $product['Name']; ?>
-                  <?php echo $product['Price']; ?>
+                  <p><?php echo $product['Name']; ?></p>
+                  <p>$<?php echo $product['Price']; ?></p>
     
                     <form action="4Products.php" method="post">
                         <input type="hidden" name="ProductID" value="<?php echo $product['ProductID']; ?>">
-                        <input type="hidden" name="UserID" value="<?php echo $user['UserID']; ?>">
+                        <input type="hidden" name="UserID" value="<?php echo $UserID; ?>">
                         <input type="submit" value="View">
                     </form>
                 </div>  
+                </li>
             </div>
             <?php endforeach; ?>
     </body>
