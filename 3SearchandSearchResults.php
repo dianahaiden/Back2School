@@ -58,9 +58,9 @@
 	</div>
     
     <body>
+    <div class="product-container">
         <?php foreach ($products as $product) : ?>
-            <ul class="product-container">
-                <li>
+            <div class="product-stuff">
                 <div class="image-container">
                 <!-- print out image -->
                     <img src="<?php echo $product['Image']; ?>" width="150">
@@ -76,9 +76,9 @@
                         <input type="submit" value="View">
                     </form>
                 </div>  
-                </li>
-            </div>
+        </div>
             <?php endforeach; ?>
+            </div>
     </body>
 
     <footer>
