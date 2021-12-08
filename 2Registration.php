@@ -81,7 +81,7 @@
                 <p>Please fill in the details to create an account with us.</p>
                 <hr>
                 <!--USERNAME-->
-                <label for="Name"><b>Name:</b></label>
+                <label for="Name"><b>Username:</b></label>
                     <input type="text" placeholder="Username" name="name">
                     <br><br>
                 <!--EMAIL-->
