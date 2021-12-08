@@ -25,10 +25,10 @@ body {
 .flex1 {
 	font-size: larger;
 	letter-spacing: .2rem;
-	padding-top: 10px;
+	padding-top: 14px;
 }
 .flex2 {
-	padding-top: 10px;
+	padding-top: 14px;
 	padding-left: 30px;
 	padding-right: 10px;
 }
@@ -36,10 +36,10 @@ body {
 .header-left {
 	float: left;
 	display: flex;
-	padding-left: 15px;
+	padding-top: 14px;
 	font-size: larger;
 	letter-spacing: .2rem;
-	padding-top: 10px;
+	padding-left: 10px;
 }
 
 footer {
@@ -109,4 +109,18 @@ aside {
 
 button {
 	border: none;
+}
+
+.product-container {
+	display: flex;
+	padding: 20px 20px 20px 20px;
+}
+
+.image-container {
+	padding-right: 10px;
+}
+
+.product-container li {
+	/*display: inline;*/
+	/*float: left;*/
 }
