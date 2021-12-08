@@ -5,7 +5,7 @@
     // Get Session and Username
     $username = $_SESSION['Username'];
 
-    // Get Cart Items From the Usere
+    // Get Cart Items From the User
     $cart_products_query = "SELECT * FROM cart WHERE userID = :userid";
     $cart_products_statement = $db->prepare($cart_products_query);
     $cart_products_statement->bindValue(':userID', $username);
