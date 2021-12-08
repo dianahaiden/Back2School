@@ -32,8 +32,25 @@
 <hmtl>
     <head>
         <title>Shoppingcart</title>
-        <link rel="shoppingcart" href="styleshoppingcart.css">
+        <link rel="stylesheet" href="styleproducts.css">
     </head>
+
+    <div class="header-bar">
+		<div class="header-left">
+			<p>HAVE FUN SHOPPING!</p>
+		</div>
+		<div class="header-homepage">
+			<a href="3SearchAndSearchResults.php"><h1>BACK2SCHOOL</h1></a>
+		</div>
+		<div class="header-right">
+			<div class="flex1">
+                <a href="signout.php"><p>SIGN OUT</p></a>
+			</div>
+			<div class="flex2">
+				<a href="5ShoppingCart.php"><img src="cart.png" width="60px"></a>
+			</div>
+		</div>
+	</div>
 
     <body>
         <h2>Your Cart</h2>
@@ -64,4 +81,8 @@
         </form>
         
     </body>
+
+    <footer>
+		<p>@ 2021 Back2School</p>	
+	</footer>
 </html>
