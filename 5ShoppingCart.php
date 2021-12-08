@@ -8,7 +8,7 @@
     // Get Session and Username
     // $Username = filter_input(INPUT_POST,$_SESSION['Username']);
     $query1="SELECT * FROM user WHERE Username = '".$_SESSION['Username']."'";
-    $statement1 = $db -> prepare($query1);
+    $statement1 = $db -> prepare($query1);https://github.com/dianahaiden/Back2School/stargazers
     //$statement1 -> bindValue($_SESSION['Username'], $Username);
 	$statement1 -> execute();
     $users = $statement1 -> fetch();
