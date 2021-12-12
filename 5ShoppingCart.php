@@ -14,8 +14,6 @@
     $users = $statement1 -> fetch();
     $UserID = $users['UserID'];
     $statement1 -> closeCursor();
-
-    echo $UserID;
     
     //$UserID = filter_input(INPUT_POST, $UserID);
     $ProductID = filter_input(INPUT_POST, 'ProductID');
