@@ -13,7 +13,7 @@
 
     $data=$db->query($query);
 
-    if($query) {
+    if($data->rowCount()>0) {
         if($check=='1') {
             // sets cookie that remembers usename and password and insta-logsin
             setcookie($Username, 'Username', time()+3600, "/"."",0);
