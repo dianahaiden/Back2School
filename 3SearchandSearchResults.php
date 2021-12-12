@@ -63,19 +63,18 @@
         <?php foreach ($products as $product) : ?>
             <div class="product-stuff">
                 <div class="image-container">
-                <!-- print out image -->
-                    <img src="<?php echo $product['Image']; ?>" width="150">
+                <form action="4Products.php" method="post">
+                    <!-- print out image -->
+                    <input type="image" src="<?php echo $product['Image']; ?>" width="150" height="150">
+                    <input type="hidden" name="ProductID" value="<?php echo $product['ProductID']; ?>">
+                    <input type="hidden" name="UserID" value="<?php echo $UserID; ?>">
+                </form>
+                
                 </div>  
                 <div class="product_info">
                   <!-- print out name and price -->
                   <p><?php echo $product['Name']; ?></p>
                   <p>$<?php echo $product['Price']; ?></p>
-    
-                    <form action="4Products.php" method="post">
-                        <input type="hidden" name="ProductID" value="<?php echo $product['ProductID']; ?>">
-                        <input type="hidden" name="UserID" value="<?php echo $UserID; ?>">
-                        <input type="submit" value="View">
-                    </form>
                 </div>  
         </div>
             <?php endforeach; ?>
