@@ -19,8 +19,6 @@
         $_SESSION['Username'] = $_POST['Username'];
         if($check=='1') {
             // sets cookie that remembers usename and password and insta-logsin
-            setcookie($Username, 'Username', time()+3600, "/"."",0);
-            setcookie($Password, 'Password', time()+3600, "/"."",0);
             setcookie('mycookie', TRUE, time()+6);
         }
         
