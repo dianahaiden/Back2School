@@ -2,7 +2,7 @@
     if(isset($_COOKIE['mycookie'])) {
         header('Location: 3SearchAndSearchResults.php');
     }
-
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +23,16 @@
             <input type="checkbox" value="1" name="check"><br>
             <input type="submit" value="Login">
             <p>Don't have an account? <a href="2Registration.php">Register</a>.</p>
+            <?php
+                if(isset($_SESSION["error"])){
+                    $error = $_SESSION["error"];
+                    echo "<span>$error</span>";
+                }
+            ?>
         </form> 
-        
+
     </body>
 </html>
+<?php
+    unset($_SESSION["error"]);
+?>

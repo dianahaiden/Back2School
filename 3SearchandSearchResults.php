@@ -2,7 +2,6 @@
     require('database.php');
 
     session_start();
-    echo $_SESSION['Username'];
     
     $ProductID = filter_input(INPUT_GET, 'ProductID',FILTER_VALIDATE_INT);
     if ($ProductID == NULL || $ProductID ==  FALSE) {
@@ -15,12 +14,14 @@
     $products = $statement2 -> fetchAll();
     $statement2 -> closeCursor();
 
+    if(isset($_SESSION['Username'])){
     $query1="SELECT * FROM user WHERE Username ='".$_SESSION['Username']."'";
     $statement1 = $db -> prepare($query1);
 	$statement1 -> execute();
     $user = $statement1 -> fetch();
     $UserID = $user['UserID'];
     $statement1 -> closeCursor();
+    }
 
     /*
 	$query2 = 'SELECT * FROM user WHERE UserID = :UserID';

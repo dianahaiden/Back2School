@@ -24,13 +24,14 @@
 	$product = $statement -> fetch();
 	$statement -> closeCursor();
 
+	if(isset($_SESSION['Username'])){
 	$query1="SELECT * FROM user WHERE Username ='".$_SESSION['Username']."'";
     $statement1 = $db -> prepare($query1);
 	$statement1 -> execute();
     $user = $statement1 -> fetch();
     $UserID = $user['UserID'];
     $statement1 -> closeCursor();
-	
+	}
 ?>
 
 <!DOCTYPE html>

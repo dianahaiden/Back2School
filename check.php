@@ -7,13 +7,16 @@
     $Username=$_POST['Username'];
     $Password=$_POST['Password'];
     $check=$_POST['check'];
-    $_SESSION['Username'] = $_POST['Username'];
+    $error = "Username/Password Incorrect";
+    
     
     $query="SELECT * FROM user WHERE Username='$Username' AND Password='$Password'";
+
 
     $data=$db->query($query);
 
     if($data->rowCount()>0) {
+        $_SESSION['Username'] = $_POST['Username'];
         if($check=='1') {
             // sets cookie that remembers usename and password and insta-logsin
             setcookie($Username, 'Username', time()+3600, "/"."",0);
@@ -25,6 +28,7 @@
         
     } else {
         // header('Location: error.html');
-        echo "<p>wrong info, $Username, $Password,</p>";
+        $_SESSION["error"] = $error;
+        header('Location: 1Login.php');
     }
 ?>
