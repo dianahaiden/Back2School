@@ -1,8 +1,9 @@
 <?php
+    session_start();
     if(isset($_COOKIE['mycookie'])) {
         header('Location: 3SearchAndSearchResults.php');
     }
-    session_start();
+    
 ?>
 
 <!DOCTYPE html>
