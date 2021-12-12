@@ -25,6 +25,9 @@
 	$products = $statement -> fetchAll(PDO::FETCH_ASSOC);
 	$statement -> closeCursor();
     
+    $totalquantity = 0;
+    $totalamount = 0;
+
     } else {
         header('location: 1Login.php');
     }
@@ -61,12 +64,18 @@
                 <th>Name</th>
                 <th>Quantity</th>
                 <th>Price</th>
+                <th>Total</th>
             </tr>
             <form action="removeCart.php" method="post">
                 <?php foreach ($products as $product) : ?>
+                    <?php
+                    $totalquantity = $totalquantity + $product['Quantity'];
+                    $totalamount = $totalamount + $product['Price'] * $product['Quantity'];
+                    ?>
                     <tr>
                         <td><?php echo $product['Name']; ?></td>
                         <td><?php echo $product['Quantity']; ?></td>
+                        <td><?php echo $product['Price']; ?></td>
                         <td><?php echo $product['Price'] * $product['Quantity']; ?></td>
                         <td>
                             <input type="submit" value="Remove">
@@ -74,7 +83,14 @@
 						    <input type="hidden" name="UserID" value="<?php echo $UserID; ?>">
                         </td>
                     </tr>
+                    
                 <?php endforeach; ?>
+                <tr>
+                    <td>Total</td>
+                    <td><?php echo $totalquantity ?> </td>
+                    <td></td>
+                    <td><?php echo $totalamount ?> </td>
+                </tr>
             </form>
         </table>
         <form action="6CheckOut.php" method="post">
