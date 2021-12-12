@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 06, 2021 at 09:32 PM
+-- Generation Time: Dec 13, 2021 at 12:23 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.4.22
 
@@ -31,8 +31,16 @@ CREATE TABLE `cart` (
   `UserID` int(10) NOT NULL,
   `ProductID` int(10) NOT NULL,
   `Quantity` int(10) NOT NULL,
-  `CartID` int(10) NOT NULL
+  `CartID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`UserID`, `ProductID`, `Quantity`, `CartID`) VALUES
+(1, 1, 2, 4),
+(1, 2, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -45,7 +53,7 @@ CREATE TABLE `payment_option` (
   `user_id` varchar(255) DEFAULT NULL,
   `pay_fullname` varchar(100) DEFAULT NULL,
   `pay_alias` varchar(20) DEFAULT NULL,
-  `pay_type` enum('CreditCard','DebitCard') DEFAULT NULL,
+  `pay_type` enum('PayPal','CreditCard','DebitCard','AfterPay','COD','Other') DEFAULT 'Other',
   `email` varchar(100) DEFAULT NULL,
   `card_number` varchar(20) DEFAULT NULL,
   `card_ccv` varchar(5) DEFAULT NULL,
@@ -65,6 +73,19 @@ CREATE TABLE `product` (
   `Price` float NOT NULL,
   `Image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`ProductID`, `Name`, `Price`, `Image`) VALUES
+(1, 'Mechanical Pencil', 0.99, 'images/mechanicalpencil.jpg'),
+(2, 'Binder', 4.99, 'images/binder.jpg'),
+(3, 'Backpack', 15.99, 'images/backpack.jpg'),
+(4, 'Highlighter', 1.99, 'images/highlighter.jpg'),
+(5, 'Notebook', 3.99, 'images/notebook.jpg'),
+(6, 'Pen', 1.99, 'images/pen.jpg'),
+(7, 'Post-it-note', 0.99, 'images/post-it-note.jpg');
 
 -- --------------------------------------------------------
 
@@ -101,11 +122,19 @@ CREATE TABLE `shop_order` (
 --
 
 CREATE TABLE `user` (
-  `UserID` int(10) NOT NULL,
+  `UserID` int(11) NOT NULL,
   `Username` varchar(255) NOT NULL,
   `Email` varchar(255) NOT NULL,
   `Password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`UserID`, `Username`, `Email`, `Password`) VALUES
+(1, '123', '123@gmail.com', '123'),
+(2, '321', '321@gmail.com', '321');
 
 --
 -- Indexes for dumped tables
@@ -157,35 +186,33 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `CartID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `CartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `ProductID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `ProductID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `shipping`
+--
+ALTER TABLE `shipping`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `shop_order`
+--
+ALTER TABLE `shop_order`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `UserID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-
-/* insert products into table */
-INSERT INTO `product` (`productid`, `name`, `price`, `image`) VALUES
-('1', 'Mechanical Pencil', '3.99', 'images/pencil.jpg'),
-('2', 'Pen', '3.99', 'images/pen.jpg'),
-('3', 'Notebook', '3.99', 'images/notebook.jpg'),
-('4', 'Binder', '3.99', 'images/binder.jpg'),
-('5', 'Highlighter', '3.99', 'images/highlighter.jpg'),
-('6', 'Post-It Notes', '3.99', 'images/post-it-note.jpg'),
-('7', 'BackPack', '3.99', 'images/backpack.jpg'),
-('8', 'Laptop', '3.99', 'images/laptop.jpg'),
-('9', 'Accessories', '3.99', 'images/accessories.jpg');
