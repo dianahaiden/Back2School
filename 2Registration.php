@@ -7,7 +7,7 @@
 <html>
     <head>
         <title>Registration</title>
-        <link rel="registration" href="styleregistration.css">
+        <link rel="stylesheet" href="styleproducts.css">
         <script>
             function required(){
                 var name = document.forms["register"]["name"].value;
@@ -73,10 +73,16 @@
         </script>
     </head>
 
+    <div class="header-bar">
+        <div class="header-homepage">
+            <h1>WELCOME TO BACK2SCHOOL</h1>
+        </div>
+    </div>
+
     <body>
         <form name = "register" onsubmit="return required()" action="reg.php" method="post">
             <!--New User-->
-            <div> 
+            <div class="reg-body"> 
                 <h1>Registration Form</h1>
                 <p>Please fill in the details to create an account with us.</p>
                 <hr>
@@ -96,16 +102,17 @@
                     <input type="password" placeholder="Confirm Password" name="confirm">
                     <br><br>
                 <hr>
-                <input type="submit" value = "Register">
+                <button type="submit" class="checkout-button">Register</button>
+
+                <p>Already have an account? <a href="1Login.php">Sign in</a>.</p>
             </div>
 
             <p id="demo"></p>
-
-            <!--Returning User-->
-            <div> 
-                <p>Already have an account? <a href="1Login.php">Sign in</a>.</p>
-            </div>
         </form>
         
     </body>
+    <footer>
+		<p>@ 2021 Back2School</p>	
+	</footer>
+    
 </html>

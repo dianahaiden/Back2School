@@ -120,7 +120,7 @@ button {
 	overflow-x: auto;
     /*scroll-behavior: smooth;*/
 	padding: 20px 20px 20px 20px;
-	padding-top: 160px;
+	padding-top: 120px;
 }
 
 .product-container::-webkit-scrollbar{
@@ -147,6 +147,14 @@ button {
 	display: block;
 	padding-top: 150px;
 	max-width: 350px;
+
+}
+
+.reg-body {
+	margin: auto;
+	display: block;
+	padding-top: 50px;
+	max-width: 400px;
 
 }
 
