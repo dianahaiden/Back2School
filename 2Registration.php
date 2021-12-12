@@ -105,9 +105,7 @@
                 <button type="submit" class="checkout-button">Register</button>
 
                 <p>Already have an account? <a href="1Login.php">Sign in</a>.</p>
-            </div>
-
-            <p id="demo"></p>
+		</div>
         </form>
         
     </body>
