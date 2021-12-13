@@ -10,20 +10,27 @@
 <html>
     <head>
         <title>Login</title>
-        <link rel="login" href="stylelogin.css">
+        <link rel="stylesheet" href="styleproducts.css">
     </head>
     <body>
-        <h1>Welcome to Back2School</h1>
 
+    <div class="header-bar">
+        <div class="header-homepage">
+            <h1>WELCOME TO BACK2SCHOOL</h1>
+        </div>
+    </div>
+
+    <div class="login-body">
         <form action="check.php" method="post">
-            <label>Username:</label><br>
+            <label>USERNAME:</label><br>
             <input type="text" name="Username" placeholder="Username"><br>
-            <label>Password:</label><br>
+            <label>PASSWORD:</label><br>
             <input type="password" name="Password"><br>
-            <label>Remember Me</label>
+            <label>REMEMBER ME:</label>
             <input type="checkbox" value="1" name="check"><br>
-            <input type="submit" value="Login">
-            <p>Don't have an account? <a href="2Registration.php">Register</a>.</p>
+            <button type = "submit" class="checkout-button">Login</button>
+            <p>DON'T HAVE AN ACCOUNT?</p>
+            </p><a href="2Registration.php">REGISTER</a></p>
             <?php
                 if(isset($_SESSION["error"])){
                     $error = $_SESSION["error"];
@@ -31,8 +38,13 @@
                 }
             ?>
         </form> 
+    </div>
 
     </body>
+
+    <footer>
+		<p>@ 2021 Back2School</p>	
+	</footer>
 </html>
 <?php
     unset($_SESSION["error"]);
