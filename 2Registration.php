@@ -105,12 +105,19 @@
                 <button type="submit" class="checkout-button">Register</button>
 
                 <p>Already have an account? <a href="1Login.php">Sign in</a>.</p>
-		</div>
+            </div>
+            <?php
+                if(isset($_SESSION["error"])){
+                    $error = $_SESSION["error"];
+                    echo "<span>$error</span>";
+                }
+            ?>
         </form>
-        
     </body>
     <footer>
 		<p>@ 2021 Back2School</p>	
 	</footer>
-    
 </html>
+<?php
+    unset($_SESSION["error"]);
+?>
