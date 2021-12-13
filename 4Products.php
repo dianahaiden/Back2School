@@ -63,7 +63,7 @@
 			<main>
 				<div class="photo-column">
 					<!-- Print Image -->
-					<img src="<?php echo $product['Image']; ?>" width="600">
+					<img src="<?php echo $product['Image']; ?>" width="600" height="480">
 
 				</div>
 			</main>
