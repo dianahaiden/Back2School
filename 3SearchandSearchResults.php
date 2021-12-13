@@ -73,7 +73,7 @@
                 </div>  
                 <div class="product_info">
                   <!-- print out name and price -->
-                  <p><?php echo $product['Name']; ?></p>
+                  <p><b><?php echo $product['Name']; ?></b></p>
                   <p>$<?php echo $product['Price']; ?></p>
                 </div>  
         </div>
