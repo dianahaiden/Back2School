@@ -13,7 +13,7 @@
     $user = $user_stmt->fetch();
 
     // Delete items from the cart
-    $cart_del_query = "DELETE * FROM cart WHERE UserID = :userid";
+    $cart_del_query = "DELETE FROM cart WHERE UserID = :userid";
     $cart_del_stmt = $db->prepare($cart_del_query);
     $cart_del_stmt->bindValue(':userid', $user['UserID']);
     $cart_del_stmt->execute();
@@ -24,4 +24,3 @@
     header('location: 1Login.php');
   }
 ?>
-
