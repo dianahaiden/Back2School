@@ -317,8 +317,8 @@
                         <option value="Zambia">Zambia</option>
                         <option value="Zimbabwe">Zimbabwe</option>
                     </select>
-                    <input type="text" id="street" name="street" placeholder="Street Adress"><br>
-                    <input type="text" id="address2" name="address2" placeholder="Apt, suite, floor (Optional)"><br>
+                    <input type="text" id="street" name="street" placeholder="Street Address"><br>
+                    <input type="text" id="address2" name="address2" placeholder="Apt, Suite, Floor (Optional)"><br>
                     <input type="text" id="city" name="city" placeholder="City"><br>
                     <select name="state" id="state">
                         <option value="">State</option>
