@@ -1,8 +1,9 @@
 # Back2School
 This is a Ecommerce Website.
-
-In order to run, you must install Xampp and then download these files into the Htdocs folder in Xampp, while you have Apace and SQL running on Xampp.
-
-Then, you must create the database on localhost/phpmyadmin
-
-After that, you can run the code with localhost/project/1Login.php
+Create a database in MySQL named back2school
+Import back2school.sql into the database
+Move all files into htdocs folder of XAMPP folder
+Open 1Login.php
+Database already have some users created, so you can login with one of those or make a new one by navigating to the register page
+Once Logged in the main page 3SearchandSearchResults.php will show, any time user want to return to this page simply press the BACK2SCHOOL text on the top of the screen
+We test our code on macOS catalina Google Chrome 2 and FireFox, Windows 10 on Google Chrome and Microsoft Edge
