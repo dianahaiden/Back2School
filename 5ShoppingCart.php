@@ -56,13 +56,16 @@
 	</div>
 
     <body>
-        <h2>Your Cart</h2>
+        <div class="cart-body">
+        <h2>YOUR CART</h2>
         <table>
             <tr>
-                <th>Name</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Total</th>
+                <div class="table-stuff">
+                <th><b><p>Name</p><b></th>
+                <th><b><p>Quantity</p><b></th>
+                <th><b><p>Price</p><b></th>
+                <th><b><p>Total</p><b></th>
+</div>
             </tr>
             <form action="removeCart.php" method="post">
                 <?php foreach ($products as $product) : ?>
@@ -71,12 +74,12 @@
                     $totalamount = $totalamount + $product['Price'] * $product['Quantity'];
                     ?>
                     <tr>
-                        <td><?php echo $product['Name']; ?></td>
-                        <td><?php echo $product['Quantity']; ?></td>
-                        <td><?php echo $product['Price']; ?></td>
-                        <td><?php echo $product['Price'] * $product['Quantity']; ?></td>
+                        <td><p><?php echo $product['Name']; ?></p></td>
+                        <td><p><?php echo $product['Quantity']; ?></p></td>
+                        <td><p>$<?php echo $product['Price']; ?></p></td>
+                        <td><p>$<?php echo $product['Price'] * $product['Quantity']; ?></p></td>
                         <td>
-                            <input type="submit" value="Remove">
+                        <button type = "submit" class="remove-button">Remove</button>
                             <input type="hidden" name="ProductID" value="<?php echo $product['ProductID']; ?>">
 						    <input type="hidden" name="UserID" value="<?php echo $UserID; ?>">
                         </td>
@@ -84,16 +87,20 @@
                     
                 <?php endforeach; ?>
                 <tr>
-                    <td>Total</td>
-                    <td><?php echo $totalquantity ?> </td>
+                    <td><b><p>Total</b></p></td>
+                    <td><b><p><?php echo $totalquantity ?></b></p></td>
                     <td></td>
-                    <td><?php echo $totalamount ?> </td>
+                    <td><b><p>$<?php echo $totalamount ?></b></p></td>
                 </tr>
             </form>
         </table>
         <form action="6CheckOut.php" method="post">
-            <input type="submit" value="Checkout">
+        <button type = "submit" class="checkout-button">Checkout</button>
         </form>
-        
+                </div>
     </body>
+
+    <footer>
+		<p>@ 2021 Back2School</p>	
+	</footer>
 </html>

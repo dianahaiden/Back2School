@@ -78,6 +78,7 @@ main {
 
 h2 {
 	padding-bottom: 10px;
+	color: #686667;
 }
 
 aside {
@@ -109,6 +110,10 @@ aside {
 }
 
 .checkout-button:hover {
+	background-color: #81C953;
+}
+
+.remove-button:hover {
 	background-color: #81C953;
 }
 
@@ -159,9 +164,33 @@ button {
 
 }
 
+.cart-body {
+	margin: auto;
+	display: block;
+	padding-top: 50px;
+	max-width: 500px;
+}
+
 label {
 	padding-bottom: 5px;
 	color: #605E5F;
 	letter-spacing: .2rem;
 }
 
+th, td {
+	padding: 15px;
+	text-align: middle;
+}
+
+.table-stuff {
+	font-weight: bolder;
+}
+
+.remove-button {
+	color: #605E5F;
+	background-color: #97E589;
+	border-radius: 4px;
+	font-size:12px;
+	padding: 12px 30px;
+	text-decoration: none;
+}
