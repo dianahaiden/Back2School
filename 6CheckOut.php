@@ -32,15 +32,6 @@
             $products[$cart_item['ProductID']]['Quantity'] = $cart_item['Quantity'];
             $products_stmt->closeCursor();
         }
-
-        // Get Payment Options From User
-        $pay_options_query = "SELECT * FROM payment_option WHERE user_id = :userid";
-        $pay_options_stmt = $db->prepare($pay_options_query);
-        $pay_options_stmt->bindValue(':userid', $user['UserID']);
-        $pay_options_stmt->execute();
-        $pay_options = $pay_options_stmt->fetchAll();
-        $pay_options_stmt->closeCursor();
-
         // Total Cost
         $total_cost = 0;
     }
@@ -54,21 +45,38 @@
     <head>
         <title>Checkout</title>
         <link rel="stylesheet" href="StyleCheckOut.css">
+        <link rel="stylesheet" href="styleproducts.css">
     </head>
+
+    <div class="header-bar">
+		<div class="header-left">
+			<p>HAVE FUN SHOPPING!</p>
+		</div>
+		<div class="header-homepage">
+			<a href="3SearchAndSearchResults.php"><h1>BACK2SCHOOL</h1></a>
+		</div>
+		<div class="header-right">
+			<div class="flex1">
+                <a href="signout.php"><p>SIGN OUT</p></a>
+			</div>
+			<div class="flex2">
+				<a href="5ShoppingCart.php"><img src="cart.png" width="60px"></a>
+			</div>
+		</div>
+	</div>
+
     <body>
-        <div class="header-bar">
-        <h1>Check Out</h1>
-        </div>
-        <div id="checkout-cont">
+        <div class="checkout-cont">
             <form action="./7Confirm.php" method="post">
             
             <div class="checkout-payment-cont">
                 <div id="checkout-shipping-cont">
                     <h3>Shipping Information</h3>
-                    <input type="text" id="fname" name="fname" placeholder="First Name"><br>
+                    <input type="text" id="fname" name="fname" placeholder="First Name">
                     <input type="text" id="lname" name="lname" placeholder="Last Name"><br>           
-                    <select name="country" id="country">
+                    <select name="country" class="country">
                         <option value="">Country/Territory/Region</option>
+                        <option value="United States of America">United States of America</option>
                         <option value="">---</option>
                         <option value="Afganistan">Afghanistan</option>
                         <option value="Albania">Albania</option>
@@ -301,7 +309,6 @@
                         <option value="United Kingdom">United Kingdom</option>
                         <option value="Ukraine">Ukraine</option>
                         <option value="United Arab Erimates">United Arab Emirates</option>
-                        <option value="United States of America">United States of America</option>
                         <option value="Uraguay">Uruguay</option>
                         <option value="Uzbekistan">Uzbekistan</option>
                         <option value="Vanuatu">Vanuatu</option>
@@ -316,74 +323,20 @@
                         <option value="Zaire">Zaire</option>
                         <option value="Zambia">Zambia</option>
                         <option value="Zimbabwe">Zimbabwe</option>
-                    </select>
-                    <input type="text" id="street" name="street" placeholder="Street Address"><br>
+                    </select><br>
+                    <input type="text" id="street" name="street" placeholder="Street Address">
                     <input type="text" id="address2" name="address2" placeholder="Apt, Suite, Floor (Optional)"><br>
-                    <input type="text" id="city" name="city" placeholder="City"><br>
-                    <select name="state" id="state">
-                        <option value="">State</option>
-                        <option value="">---</option>
-                        <option value="AL">Alabama</option>
-                        <option value="AK">Alaska</option>
-                        <option value="AZ">Arizona</option>
-                        <option value="AR">Arkansas</option>
-                        <option value="CA">California</option>
-                        <option value="CO">Colorado</option>
-                        <option value="CT">Connecticut</option>
-                        <option value="DE">Delaware</option>
-                        <option value="DC">District Of Columbia</option>
-                        <option value="FL">Florida</option>
-                        <option value="GA">Georgia</option>
-                        <option value="HI">Hawaii</option>
-                        <option value="ID">Idaho</option>
-                        <option value="IL">Illinois</option>
-                        <option value="IN">Indiana</option>
-                        <option value="IA">Iowa</option>
-                        <option value="KS">Kansas</option>
-                        <option value="KY">Kentucky</option>
-                        <option value="LA">Louisiana</option>
-                        <option value="ME">Maine</option>
-                        <option value="MD">Maryland</option>
-                        <option value="MA">Massachusetts</option>
-                        <option value="MI">Michigan</option>
-                        <option value="MN">Minnesota</option>
-                        <option value="MS">Mississippi</option>
-                        <option value="MO">Missouri</option>
-                        <option value="MT">Montana</option>
-                        <option value="NE">Nebraska</option>
-                        <option value="NV">Nevada</option>
-                        <option value="NH">New Hampshire</option>
-                        <option value="NJ">New Jersey</option>
-                        <option value="NM">New Mexico</option>
-                        <option value="NY">New York</option>
-                        <option value="NC">North Carolina</option>
-                        <option value="ND">North Dakota</option>
-                        <option value="OH">Ohio</option>
-                        <option value="OK">Oklahoma</option>
-                        <option value="OR">Oregon</option>
-                        <option value="PA">Pennsylvania</option>
-                        <option value="RI">Rhode Island</option>
-                        <option value="SC">South Carolina</option>
-                        <option value="SD">South Dakota</option>
-                        <option value="TN">Tennessee</option>
-                        <option value="TX">Texas</option>
-                        <option value="UT">Utah</option>
-                        <option value="VT">Vermont</option>
-                        <option value="VA">Virginia</option>
-                        <option value="WA">Washington</option>
-                        <option value="WV">West Virginia</option>
-                        <option value="WI">Wisconsin</option>
-                        <option value="WY">Wyoming</option>
-                    </select>
-                    <input type="text" id="zip" name="zip" placeholder="Zip Code"><br>
+                    <input type="text" id="city" name="city" placeholder="City">
+                    <input type="text" id="state" name="state" placeholder="State"><br>
+                    <input type="text" class="zip" name="zip" placeholder="Zip Code"><br>
                 </div>
 
                 <div id="checkout-payment-methods">
                     <div id="checkout-payment-add">
                         <h3>Payment Information</h3>
-                        <input type="text" id="name" name="name" placeholder="Name on Card"><br>
+                        <input type="text" id="name" name="name" placeholder="Name on Card">
                         <input type="text" id="CardNumber" name="CardNumber" placeholder="Card Number"><br>
-                        <select name="month" id="month">
+                        <select name="month" class="month">
                             <option value="">Month</option>
                             <option value="">---</option>
                             <option value="Jan">January</option>
@@ -399,7 +352,7 @@
                             <option value="Nov">November</option>
                             <option value="Dec">December</option>
                         </select>
-                        <select name="year" id="year">
+                        <select name="year" class="year">
                             <option value="">Year</option>
                             <option value="">---</option>
                             <option value="2021">2021</option>
@@ -416,28 +369,17 @@
                         </select><br>
                     </div>
                 </div>
-                <div id="checkout-wrong-info">
-                    <p>Not you? <a href="./Reg.php">Click here</a></p>
-                </div>
-            </div>
-            
-            <div class="checkout-cart-cont">
-            </div>
-                
-            <div id="pay-btn">
-                <form action="" method="post">
-                    <button id="btn-payment">
-                        <input type="submit" value="Checkout">
-                    </button>
-                </form>
-            </div>
                 
             </div>
-        
+
+            <div class="checkoutbutton">
+                <button type = "submit" class="checkout-button">Checkout</button>     
+            </div>   
             </form>
         </div>
-    </body>
     <footer>
 		<p>@ 2021 Back2School</p>	
 	</footer>
+    </body>
+    
 </html>
