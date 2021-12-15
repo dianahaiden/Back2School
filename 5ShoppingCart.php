@@ -64,6 +64,7 @@
                 <th><b><p>Quantity</p><b></th>
                 <th><b><p>Price</p><b></th>
                 <th><b><p>Total</p><b></th>
+                </div>
             </tr>
             <form action="removeCart.php" method="post">
                 <?php foreach ($products as $product) : ?>
@@ -100,6 +101,7 @@
         <form action="6CheckOut.php" method="post">
             <button type = "submit" class="checkout-button">Checkout</button>
         </form>
+        </div>
     </body>
 
     <footer>
