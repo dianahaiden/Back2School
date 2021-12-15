@@ -51,7 +51,7 @@
     
     <body>
     <div class="confirm-container">
-        <h2>Thanks for your purchase!</h2>
+        <h2 style="text-align:center;">Thanks for your purchase!</h2>
     </div>
     </body>
 
