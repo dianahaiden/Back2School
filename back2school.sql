@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 13, 2021 at 12:23 AM
+-- Generation Time: Dec 15, 2021 at 05:03 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.4.22
 
@@ -32,33 +32,6 @@ CREATE TABLE `cart` (
   `ProductID` int(10) NOT NULL,
   `Quantity` int(10) NOT NULL,
   `CartID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`UserID`, `ProductID`, `Quantity`, `CartID`) VALUES
-(1, 1, 2, 4),
-(1, 2, 1, 5);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `payment_option`
---
-
-CREATE TABLE `payment_option` (
-  `id` int(11) NOT NULL,
-  `user_id` varchar(255) DEFAULT NULL,
-  `pay_fullname` varchar(100) DEFAULT NULL,
-  `pay_alias` varchar(20) DEFAULT NULL,
-  `pay_type` enum('PayPal','CreditCard','DebitCard','AfterPay','COD','Other') DEFAULT 'Other',
-  `email` varchar(100) DEFAULT NULL,
-  `card_number` varchar(20) DEFAULT NULL,
-  `card_ccv` varchar(5) DEFAULT NULL,
-  `card_expiry` date DEFAULT NULL,
-  `cod_id` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -90,34 +63,6 @@ INSERT INTO `product` (`ProductID`, `Name`, `Price`, `Image`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `shipping`
---
-
-CREATE TABLE `shipping` (
-  `id` int(11) NOT NULL,
-  `shipping_code` varchar(40) NOT NULL,
-  `creation_date` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `shop_order`
---
-
-CREATE TABLE `shop_order` (
-  `id` int(11) NOT NULL,
-  `cart_id` int(11) DEFAULT NULL,
-  `user_id` varchar(255) DEFAULT NULL,
-  `payment_id` int(11) DEFAULT NULL,
-  `shipping_id` int(11) DEFAULT NULL,
-  `total_cost` float(10,2) DEFAULT 0.00,
-  `order_date` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `user`
 --
 
@@ -134,7 +79,9 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`UserID`, `Username`, `Email`, `Password`) VALUES
 (1, '123', '123@gmail.com', '123'),
-(2, '321', '321@gmail.com', '321');
+(2, '321', '321@gmail.com', '321'),
+(3, '12345', '12345@gmail.com', '12345'),
+(5, '444', '444@gmail.com', '444');
 
 --
 -- Indexes for dumped tables
@@ -147,28 +94,10 @@ ALTER TABLE `cart`
   ADD PRIMARY KEY (`CartID`);
 
 --
--- Indexes for table `payment_option`
---
-ALTER TABLE `payment_option`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`ProductID`);
-
---
--- Indexes for table `shipping`
---
-ALTER TABLE `shipping`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `shop_order`
---
-ALTER TABLE `shop_order`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user`
@@ -186,7 +115,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `CartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `CartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -195,22 +124,10 @@ ALTER TABLE `product`
   MODIFY `ProductID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `shipping`
---
-ALTER TABLE `shipping`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `shop_order`
---
-ALTER TABLE `shop_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
