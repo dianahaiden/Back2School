@@ -3,6 +3,8 @@
     // If cookie is set stay logged in
     if(isset($_COOKIE['mycookie'])) {
         header('Location: 3SearchandSearchResults.php');
+    } else {
+        unset($_SESSION["Username"]);
     }
     
 ?>
