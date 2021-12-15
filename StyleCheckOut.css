@@ -1,15 +1,32 @@
 body {
-  width: 100%;
-  background-color: white;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+	margin: center; 
+	font-family: verdana;
+	background-color: #f5f5f5;
+}
+
+.header-bar {
+	overflow: hidden;
+	display: flex;
+	width: 100%;
+	box-shadow: 0 4px 2px -2px gray;
 }
 
 h1 {
   color: #605E5F;
+
 }
 
 p {
   color: #8E8E8E;
+}
+
+footer {
+	background-color: #666464;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	margin: auto;
+	text-align: center;
 }
 
 .checkout-cont {
@@ -21,7 +38,7 @@ p {
 .checkout-payment-cont {
   width: 50%;
   height: auto;
-  float: left;
+  float: center;
   margin-right: 2vw;
 }
 
@@ -30,80 +47,11 @@ p {
   height: auto;
   background-color: antiquewhite;
   border-radius: 10%;
-  float: left;
+  float: center;
 }
 
-.cart-items {
+.center {
   margin: auto;
-  width: 90%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.cart-item-img {
-  width: 20%;
-  display: inline-block;
-}
-
-.cart-item-img img {
-  object-fit: contain;
-  max-width: 100%;
-}
-
-.cart-item-name {
-  width: 20%;
-  height: 100%;
-}
-
-.cart-item-counter {
-  width: 24%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.counter-btn {
-  width: 30%;
-  border-radius: 50%;
-  background-color: lightblue;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  font-family: 'Open Sans';
-  font-weight: 500;
-}
-
-.counter-qty {
-  font-size: 20px;
-  font-family: 'Open Sans';
-  font-weight: 600;
-}
-
-.cart-item-price {
-  height: 100%;
-  text-align: right;
-}
-
-#checkout-shipping-cont {
-  width: 90%;
-}
-
-#checkout-payment-methods {
-  width: 90%;
-}
-
-#checkout-data-mid {
-  width: 2%;
-  height: auto;
-  background-color: lightgray;
-}
-
-#checkout-cart-cont {
-  width: auto;
-  height: auto;
-  padding-bottom: 10px;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  width: 60%;
+  padding: 10px;
 }
