@@ -56,51 +56,51 @@
 
     <body>
         <div class="cart-body">
-        <h2>YOUR CART</h2>
-        <table>
-            <tr>
-                <div class="table-stuff">
-                <th><b><p>Name</p><b></th>
-                <th><b><p>Quantity</p><b></th>
-                <th><b><p>Price</p><b></th>
-                <th><b><p>Total</p><b></th>
-                </div>
-            </tr>
-            <form action="removeCart.php" method="post">
-                <?php foreach ($products as $product) : ?>
-                    <?php
-                    // total number of items
-                    $totalquantity = $totalquantity + $product['Quantity'];
-
-                    // total cost
-                    $totalamount = $totalamount + $product['Price'] * $product['Quantity'];
-                    ?>
-                    <tr>
-                        <td><p><?php echo $product['Name']; ?></p></td>
-                        <td><p><?php echo $product['Quantity']; ?></p></td>
-                        <td><p>$<?php echo $product['Price']; ?></p></td>
-                        <td><p>$<?php echo $product['Price'] * $product['Quantity']; ?></p></td>
-                        <td>
-                        <!-- Button to remove item from cart-->
-                        <button type = "submit" class="remove-button">Remove</button>
-                            <input type="hidden" name="ProductID" value="<?php echo $product['ProductID']; ?>">
-						    <input type="hidden" name="UserID" value="<?php echo $UserID; ?>">
-                        </td>
-                    </tr>
-                    
-                <?php endforeach; ?>
+            <h2>YOUR CART</h2>
+            <table>
                 <tr>
-                    <!-- Print total -->
-                    <td><b><p>Total</b></p></td>
-                    <td><b><p><?php echo $totalquantity ?></b></p></td>
-                    <td></td>
-                    <td><b><p>$<?php echo $totalamount ?></b></p></td>
+                    <div class="table-stuff">
+                        <th><b><p>Name</p><b></th>
+                        <th><b><p>Quantity</p><b></th>
+                        <th><b><p>Price</p><b></th>
+                        <th><b><p>Total</p><b></th>
+                    </div>
                 </tr>
+                <form action="removeCart.php" method="post">
+                    <?php foreach ($products as $product) : ?>
+                        <?php
+                        // total number of items
+                        $totalquantity = $totalquantity + $product['Quantity'];
+
+                        // total cost
+                        $totalamount = $totalamount + $product['Price'] * $product['Quantity'];
+                        ?>
+                        <tr>
+                            <td><p><?php echo $product['Name']; ?></p></td>
+                            <td><p><?php echo $product['Quantity']; ?></p></td>
+                            <td><p>$<?php echo $product['Price']; ?></p></td>
+                            <td><p>$<?php echo $product['Price'] * $product['Quantity']; ?></p></td>
+                            <td>
+                            <!-- Button to remove item from cart-->
+                            <button type = "submit" class="remove-button">Remove</button>
+                                <input type="hidden" name="ProductID" value="<?php echo $product['ProductID']; ?>">
+                                <input type="hidden" name="UserID" value="<?php echo $UserID; ?>">
+                            </td>
+                        </tr>
+                        
+                    <?php endforeach; ?>
+                    <tr>
+                        <!-- Print total -->
+                        <td><b><p>Total</b></p></td>
+                        <td><b><p><?php echo $totalquantity ?></b></p></td>
+                        <td></td>
+                        <td><b><p>$<?php echo $totalamount ?></b></p></td>
+                    </tr>
+                </form>
+            </table>
+            <form action="6CheckOut.php" method="post">
+                <button type = "submit" class="checkout-button">Checkout</button>
             </form>
-        </table>
-        <form action="6CheckOut.php" method="post">
-            <button type = "submit" class="checkout-button">Checkout</button>
-        </form>
         </div>
     </body>
 
