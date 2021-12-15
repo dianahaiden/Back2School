@@ -51,15 +51,14 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`ProductID`, `Name`, `Price`, `Image`) VALUES
-(1, 'Mechanical Pencil', 0.99, 'images/mechanicalpencil.jpg'),
-(2, 'Binder', 4.99, 'images/binder.jpg'),
-(3, 'Backpack', 15.99, 'images/backpack.jpg'),
-(4, 'Highlighter', 1.99, 'images/highlighter.jpg'),
-(5, 'Notebook', 3.99, 'images/notebook.jpg'),
-(6, 'Pen', 1.99, 'images/pen.jpg'),
-(7, 'Post-it-note', 0.99, 'images/post-it-note.jpg');
-
+INSERT INTO `product` (`ProductID`, `Name`, `ProductDescription`, `Price`, `Image`) VALUES
+(1, 'MECHANICAL PENCIL', 'An instrument used primarily for symbol creation upon paper through use of graphite trails.', 0.99, 'images/mechanicalpencil.jpg'),
+(2, 'BINDER', 'An item that can be used to store and organize paper for various uses.', 4.99, 'images/binder.jpg'),
+(3, 'BACKPACK', 'An item that allows one to easily carry multiple items and can also aid in keeping track of items.', 15.99, 'images/backpack.jpg'),
+(4, 'HIGHLIGHTER', 'An instrument that can color over a section of writing to allow the reader to more easily identify it.', 1.99, 'images/highlighter.jpg'),
+(5, 'NOTEBOOK', 'An item that contains paper for writing on and also allows all paper to be organized into a singular book.', 3.99, 'images/notebook.jpg'),
+(6, 'PEN', 'An instrument that allows one to write on paper, however it is much darker than graphite and cannot be erased.', 1.99, 'images/pen.jpg'),
+(7, 'POST-IT-NOTE', 'An item that acts as a small piece of paper and can be stuck onto most surfaces and also easily removed.', 0.99, 'images/post-it-note.jpg');
 -- --------------------------------------------------------
 
 --
