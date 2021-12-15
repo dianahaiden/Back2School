@@ -20,7 +20,7 @@
         $_SESSION['Username'] = $_POST['Username'];
         if($check=='1') {
             // sets cookie that remembers usename and password and insta-logsin
-            setcookie('mycookie', TRUE, time()+6);
+            setcookie('mycookie', TRUE, time()+3600);
         }
         
         header('Location: 3SearchandSearchResults.php');
