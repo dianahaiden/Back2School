@@ -38,7 +38,7 @@
 <html>
     <head>
         <title>Products</title>
-        <link rel="stylesheet" href="styleproducts.css">
+        <link rel="stylesheet" href="main.css">
     </head>
 
 	<div class="header-bar">

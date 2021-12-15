@@ -7,7 +7,7 @@
 <html>
     <head>
         <title>Registration</title>
-        <link rel="stylesheet" href="styleproducts.css">
+        <link rel="stylesheet" href="main.css">
         <script>
             function required(){
                 var name = document.forms["register"]["name"].value;

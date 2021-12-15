@@ -21,24 +21,21 @@
     $user = $statement1 -> fetch();
     $UserID = $user['UserID'];
     $statement1 -> closeCursor();
-    }
-
-    /*
-	$query2 = 'SELECT * FROM user WHERE UserID = :UserID';
+    
+    $query2 = 'SELECT * FROM user WHERE UserID = :UserID';
 	$statement3 = $db -> prepare($query2);
 	$statement3 -> bindValue('UserID', $UserID);
 	$success = $statement3 -> execute();
 	$user = $statement3 -> fetch();
 	$statement3 -> closeCursor();
-    */
-    
+    }
 ?>
 
 <!DOCTYPE html>
 <hmtl>
     <head>
         <title>Search</title>
-        <link rel="stylesheet" href="styleproducts.css">
+        <link rel="stylesheet" href="main.css">
     </head>
 
     <div class="header-bar">

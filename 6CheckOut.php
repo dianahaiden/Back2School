@@ -45,7 +45,7 @@
     <head>
         <title>Checkout</title>
         <link rel="stylesheet" href="StyleCheckOut.css">
-        <link rel="stylesheet" href="styleproducts.css">
+        <link rel="stylesheet" href="main.css">
     </head>
 
     <div class="header-bar">

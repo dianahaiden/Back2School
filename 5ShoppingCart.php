@@ -35,7 +35,7 @@
 <hmtl>
 <head>
         <title>Shoppingcart</title>
-        <link rel="stylesheet" href="styleproducts.css">
+        <link rel="stylesheet" href="main.css">
     </head>
 
     <div class="header-bar">

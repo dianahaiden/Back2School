@@ -1,0 +1,196 @@
+body {
+	margin: auto; 
+	font-family: verdana;
+	background-color: #f5f5f5;
+}
+
+.header-bar {
+	overflow: hidden;
+	display: flex;
+	width: 100%;
+	box-shadow: 0 4px 2px -2px gray;
+}
+
+.header-homepage {
+	margin: auto;
+	font-size: larger;
+	letter-spacing: .2rem;
+}
+
+.header-right {
+	right: 0;
+	display: flex;
+}
+
+.flex1 {
+	font-size: larger;
+	letter-spacing: .2rem;
+	padding-top: 14px;
+}
+.flex2 {
+	padding-top: 14px;
+	padding-left: 30px;
+	padding-right: 10px;
+}
+
+.header-left {
+	float: left;
+	display: flex;
+	padding-top: 14px;
+	font-size: larger;
+	letter-spacing: .2rem;
+	padding-left: 10px;
+}
+
+footer {
+	background-color: #666464;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	margin: auto;
+	text-align: center;
+}
+
+
+.content-container {
+	width: 962px;
+	margin: 15px auto; 
+	padding-top: 30px;
+}
+
+a {
+	text-decoration: none;
+}
+
+h1 {
+	color: #686667;
+}
+
+p {
+	color: #8E8E8E;
+}
+
+main {
+	height: 400px;
+	width: 600px;
+	float: left;
+}
+
+h2 {
+	padding-bottom: 10px;
+	color: #686667;
+}
+
+aside {
+	width: 350px;
+	float: right;
+}
+
+.product-info {
+	border-bottom: 1px solid #605E5F;
+}
+
+
+.photo-column {
+	height: 10px;
+}
+
+.price-checkout {
+	margin: auto;
+	color: #7E7D7F;
+}
+
+.checkout-button {
+	color: #605E5F;
+	background-color: #97E589;
+	border-radius: 6px;
+	font-size:16px;
+	padding: 12px 30px;
+	text-decoration: none;
+}
+
+.checkout-button:hover {
+	background-color: #81C953;
+}
+
+.remove-button:hover {
+	background-color: #81C953;
+}
+
+button {
+	border: none;
+}
+
+.product-container {
+	display: flex;
+	overflow-x: auto;
+    /*scroll-behavior: smooth;*/
+	padding: 20px 20px 20px 20px;
+	padding-top: 120px;
+}
+
+.product-container::-webkit-scrollbar{
+    display: none;
+}
+
+.product-stuff {
+	flex: 0 0 auto;
+    width: 250px;
+    height: 450px;
+    margin-right: 0px;
+}
+
+
+.image-container {
+	position: relative;
+    width: 100%;
+     /*height of image */
+    overflow: hidden;
+}
+
+.login-body {
+	margin: auto;
+	display: block;
+	padding-top: 150px;
+	max-width: 350px;
+
+}
+
+.reg-body {
+	margin: auto;
+	display: block;
+	padding-top: 50px;
+	max-width: 400px;
+
+}
+
+.cart-body {
+	margin: auto;
+	display: block;
+	padding-top: 50px;
+	max-width: 500px;
+}
+
+label {
+	padding-bottom: 5px;
+	color: #605E5F;
+	letter-spacing: .2rem;
+}
+
+th, td {
+	padding: 15px;
+	text-align: middle;
+}
+
+.table-stuff {
+	font-weight: bolder;
+}
+
+.remove-button {
+	color: #605E5F;
+	background-color: #97E589;
+	border-radius: 4px;
+	font-size:12px;
+	padding: 12px 30px;
+	text-decoration: none;
+}
