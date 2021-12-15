@@ -72,7 +72,7 @@
 				<div class="product-info">
 					<!-- Print Name and Product Description -->
 					<h1><?php echo $product['Name']; ?></h1>
-					<p>Product Desciption should be put here.</p>
+					<p><?php echo $product['ProductDescription']; ?></p>
 				</div>
 
 				<div class="price-checkout">

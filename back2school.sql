@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 15, 2021 at 08:12 AM
+-- Generation Time: Dec 15, 2021 at 06:55 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.4.22
 
@@ -44,21 +44,23 @@ CREATE TABLE `product` (
   `ProductID` int(10) NOT NULL,
   `Name` varchar(255) NOT NULL,
   `Price` float NOT NULL,
-  `Image` varchar(255) NOT NULL
+  `Image` varchar(255) NOT NULL,
+  `ProductDescription` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`ProductID`, `Name`, `ProductDescription`, `Price`, `Image`) VALUES
-(1, 'MECHANICAL PENCIL', 'An instrument used primarily for symbol creation upon paper through use of graphite trails.', 0.99, 'images/mechanicalpencil.jpg'),
-(2, 'BINDER', 'An item that can be used to store and organize paper for various uses.', 4.99, 'images/binder.jpg'),
-(3, 'BACKPACK', 'An item that allows one to easily carry multiple items and can also aid in keeping track of items.', 15.99, 'images/backpack.jpg'),
-(4, 'HIGHLIGHTER', 'An instrument that can color over a section of writing to allow the reader to more easily identify it.', 1.99, 'images/highlighter.jpg'),
-(5, 'NOTEBOOK', 'An item that contains paper for writing on and also allows all paper to be organized into a singular book.', 3.99, 'images/notebook.jpg'),
-(6, 'PEN', 'An instrument that allows one to write on paper, however it is much darker than graphite and cannot be erased.', 1.99, 'images/pen.jpg'),
-(7, 'POST-IT-NOTE', 'An item that acts as a small piece of paper and can be stuck onto most surfaces and also easily removed.', 0.99, 'images/post-it-note.jpg');
+INSERT INTO `product` (`ProductID`, `Name`, `Price`, `Image`, `ProductDescription`) VALUES
+(1, 'MECHANICAL PENCIL', 0.99, 'images/mechanicalpencil.jpg', 'An instrument used primarily for symbol creation upon paper through use of graphite trails.'),
+(2, 'BINDER', 4.99, 'images/binder.jpg', 'An item that can be used to store and organize paper for various uses.'),
+(3, 'BACKPACK', 15.99, 'images/backpack.jpg', 'An item that allows one to easily carry multiple items and can also aid in keeping track of items.'),
+(4, 'HIGHLIGHTER', 1.99, 'images/highlighter.jpg', 'An instrument that can color over a section of writing to allow the reader to more easily identify it.'),
+(5, 'NOTEBOOK', 3.99, 'images/notebook.jpg', 'An item that contains paper for writing on and also allows all paper to be organized into a singular book.'),
+(6, 'PEN', 1.99, 'images/pen.jpg', 'An instrument that allows one to write on paper, however it is much darker than graphite and cannot be erased.'),
+(7, 'POST-IT-NOTE', 0.99, 'images/post-it-note.jpg', 'An item that acts as a small piece of paper and can be stuck onto most surfaces and also easily removed.');
+
 -- --------------------------------------------------------
 
 --
