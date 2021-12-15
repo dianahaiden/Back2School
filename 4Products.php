@@ -24,6 +24,7 @@
 	$product = $statement -> fetch();
 	$statement -> closeCursor();
 
+	// obtain user if if logged in
 	if(isset($_SESSION['Username'])){
 	$query1="SELECT * FROM user WHERE Username ='".$_SESSION['Username']."'";
     $statement1 = $db -> prepare($query1);

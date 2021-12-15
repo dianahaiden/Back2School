@@ -1,5 +1,6 @@
 <?php
     session_start();
+    // If cookie is set stay logged in
     if(isset($_COOKIE['mycookie'])) {
         header('Location: 3SearchAndSearchResults.php');
     }
@@ -31,6 +32,8 @@
             <button type = "submit" class="checkout-button">Login</button>
             <p>DON'T HAVE AN ACCOUNT?</p>
             </p><a href="2Registration.php">REGISTER</a></p>
+            
+            <!-- If username or password is incorrect -->
             <?php
                 if(isset($_SESSION["error"])){
                     $error = $_SESSION["error"];

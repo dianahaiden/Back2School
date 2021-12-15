@@ -13,7 +13,7 @@
         $user_stmt->execute();
         $user = $user_stmt->fetch();
 
-        // Get Cart Items From the User
+        // Get Cart Items of the User
         $cart_products_query = "SELECT * FROM cart WHERE UserID = :userid";
         $cart_products_statement = $db->prepare($cart_products_query);
         $cart_products_statement->bindValue(':userid', $user['UserID']);
@@ -36,6 +36,7 @@
         $total_cost = 0;
     }
     else{
+        // if user is not logged in return to login
         header('location: 1Login.php');
     }
 ?>

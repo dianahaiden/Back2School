@@ -9,12 +9,14 @@
         <title>Registration</title>
         <link rel="stylesheet" href="main.css">
         <script>
+            // Java script to check user input in registration
             function required(){
                 var name = document.forms["register"]["name"].value;
                 var email = document.forms["register"]["email"].value;
                 var pwd = document.forms["register"]["pwd"].value;
                 var confirm = document.forms["register"]["confirm"].value;
                 
+                // Check if all inputs fields, if no error submit forum
                 if (name_confirm(name)) {
                     if (email_confirm(email)) {
                         if (pwd_confirm(pwd)) {
@@ -24,9 +26,10 @@
                         }
                     }
                 }
-
                 return false;
             }
+
+            // Check if username is empty
             function name_confirm(name){
                 var name_len = name.length;
                 if (name_len == 0) {
@@ -38,8 +41,8 @@
                 }
             }
 
+            // Check if email is empty
             function email_confirm(email){
-                
                 var email_len = email.length;
                 if (email_len == 0) {
                     alert("Email should not be empty");
@@ -50,6 +53,7 @@
                 }
             }
 
+            // Check if password is empty
             function pwd_confirm(pwd){
                 var pwd_len = pwd.length;
                 if (pwd_len == 0){
@@ -61,6 +65,7 @@
                 }
             }
 
+            // Check if passwords match
             function conf_confirm(confirm, pwd){
                 if(confirm.match(pwd)){
                     return true;
@@ -106,6 +111,8 @@
 
                 <p>Already have an account? <a href="1Login.php">Sign in</a>.</p>
             </div>
+
+            <!-- If username or email is already in use -->
             <?php
                 if(isset($_SESSION["error"])){
                     $error = $_SESSION["error"];

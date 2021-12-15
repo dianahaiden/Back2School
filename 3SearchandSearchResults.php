@@ -8,12 +8,14 @@
     $ProductID = 1;
     }
 
+    // Query product list
     $queryAllProducts = 'SELECT * FROM product ORDER BY ProductID';
     $statement2 = $db -> prepare($queryAllProducts);
     $statement2 -> execute();
     $products = $statement2 -> fetchAll();
     $statement2 -> closeCursor();
 
+    // Obtain user if logged in
     if(isset($_SESSION['Username'])){
     $query1="SELECT * FROM user WHERE Username ='".$_SESSION['Username']."'";
     $statement1 = $db -> prepare($query1);

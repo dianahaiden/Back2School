@@ -19,8 +19,8 @@
     $cart_del_stmt->execute();
     $cart_del_stmt->closeCursor();
 
-  }
-  else{
+  } else{
+    // if user is not logged in return to login
     header('location: 1Login.php');
   }
 ?>
