@@ -56,8 +56,8 @@
         <link rel="stylesheet" href="StyleCheckOut.css">
     </head>
     <body>
-        <div id="checkout-title">
-            <h1>Check Out</h1>
+        <div class="header-bar">
+        <h1>Check Out</h1>
         </div>
         <div id="checkout-cont">
             <form action="./7Confirm.php" method="post">
@@ -379,13 +379,6 @@
                 </div>
 
                 <div id="checkout-payment-methods">
-                    <div id="checkout-payment-selector">
-                        <select name="payment" id="pay-select">
-                        <?php foreach($pay_options as $pay_op) : ?>
-                        <?php echo '<option value="'.$pay_op['id'].'">'.$pay_op['pay_alias'].'</option>'?>
-                        <?php endforeach; ?>
-                        </select>
-                    </div>
                     <div id="checkout-payment-add">
                         <h3>Payment Information</h3>
                         <input type="text" id="name" name="name" placeholder="Name on Card"><br>
@@ -429,24 +422,6 @@
             </div>
             
             <div class="checkout-cart-cont">
-            <?php foreach($products as $product) : ?>
-                <div class="cart-items">
-                    <div class="cart-item-img">
-                        <img src="<?php echo $product['Image']; ?>" alt="<?php echo $product['Name']; ?>">
-                    </div>
-                    <div class="cart-item-name">
-                        <h2><?php echo $product['Name']; ?></h2>
-                    </div>
-                    <div class="cart-item-counter">
-                        <div class="counter-btn">+</div>
-                        <div class="counter-qty"><?php echo $product['Quantity']; ?></div>
-                        <div class="counter-btn">-</div>
-                    </div>
-                    <div class="cart-item-price">
-                        <?php echo $product['Quantity'] * $product['Price']; ?>
-                    </div>
-                </div>
-            <?php endforeach; ?>
             </div>
                 
             <div id="pay-btn">
@@ -462,4 +437,7 @@
             </form>
         </div>
     </body>
+    <footer>
+		<p>@ 2021 Back2School</p>	
+	</footer>
 </html>
